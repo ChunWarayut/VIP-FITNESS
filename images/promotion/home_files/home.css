@@ -1,0 +1,47 @@
+.menu-sidebar2 .logo {
+    background: #000000;
+}
+.m-b-40 {
+    margin-bottom: 0px;
+}
+.container-fluid {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.statistic {
+    padding-top: 4%;
+}
+.au-message-list {
+    height: 424px;
+}
+.au-message__footer {
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.main-content {
+    padding-top: 0%;
+}
+.au-btn--small{
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translate(0%,-50%);
+}
+div a{
+    color: #ffffff;
+}
+label {
+    display: inline-block;
+    margin: .5rem;
+}
+@media only screen and (max-width: 991) {
+    .main-content {
+        padding-top: 5%;
+    }
+    .stathome {
+        padding-top: 0%;
+    }
+    
+}

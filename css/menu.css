@@ -1,0 +1,23 @@
+.menu-sidebar2 .logo {
+    background: #000000;
+}
+.stathome {
+    padding-top: 10%;
+}
+
+@media (max-width: 1199px) {
+    .stathome {
+        padding-top: 10%;
+    }
+}
+@media (max-width: 1023px) {
+    .stathome {
+        padding-top: 15%;
+    }
+}
+@media (max-width: 991px) {
+    .stathome {
+        padding-top: 5%;
+    }
+
+}

@@ -1,0 +1,18 @@
+.page-content--bge5 {
+    background-image: url('../images/bg_login.png');    
+    background-position-x: center;
+    background-position-y: 80%;
+}
+.login-content {
+    background-color: #000;
+    box-shadow: 7px 7px 16px 0px rgba(50, 50, 50, 0.67);
+}
+.login-form .form-group label {
+    font-weight: bold;
+    font-size: 20px;
+}
+/* .au-btn--green {
+    background-color: #fec619;
+    border-color: #fec619;
+    font-weight: bold;
+} */
