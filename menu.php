@@ -1,5 +1,9 @@
 <?php 
-session_start();
+
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 ?>
 <link href="css/menu.css" rel="stylesheet">
 <body>

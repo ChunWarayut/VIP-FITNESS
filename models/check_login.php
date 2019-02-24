@@ -1,5 +1,9 @@
 <?php
-session_start();
+
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 require_once('../models/UserModel.php');
 
 $user_model = new UserModel;

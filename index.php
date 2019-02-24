@@ -1,5 +1,9 @@
 <?php 	
-	session_start();
+	
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 	if(!isset($_SESSION['member_detail'])){
 		$_REQUEST['content'] = "login";
 	}else{
