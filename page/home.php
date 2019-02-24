@@ -45,14 +45,18 @@ function readURL(input) {
 
                         <?php if ($login_user['member_status'] == 'admin') { ?>
                         <div>
-                            <button width="100%" class="au-btn au-btn--detail" data-toggle="modal"
-                                data-target="#detailpromotion">
-                                detail
-                            </button>
+                            <?PHP 
+                                $id=  $row['promotion_id']; 
+                                echo $id;
+                            ?>
+                                <button width="100%" class="au-btn au-btn--detail" data-toggle="modal"
+                                    data-target="#detailpromotion">
+                                    detail 
+                                </button>
                         </div>
                         <div>
                             <button width="100%" class="au-btn au-btn--ok" data-toggle="modal"
-                                data-target="#mediumModal">
+                                data-target="#editpromotion">
                                 edit
                             </button>
                         </div>
@@ -71,6 +75,14 @@ function readURL(input) {
     </div>
 </div>
 
+<?PHP 
+include 'models/PromotionModel.php';
+$promotion_model = new PromotionModel;
+// $id = $_GET['id'];
+$promotion = $promotion_model -> getPromotionByID($id);
+print_r ($promotion);
+echo $promotion[0][promotion_id];
+?>
 <div class="modal fade" id="addpromotion" tabindex="-1" role="dialog" aria-labelledby="addpromotionLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -109,7 +121,6 @@ function readURL(input) {
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="detailpromotion" tabindex="-1" role="dialog" aria-labelledby="detailpromotionLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -125,7 +136,7 @@ function readURL(input) {
 
                 <div class="form-group">
 
-                    <label class=" form-control-label">12</label>
+                    <label class=" form-control-label"><?php echo  $promotion[0][promotion_id];  ?></label>
                     <input type="text" id="promotion_name" name="promotion_name" placeholder="ชื่อ"
                         class="form-control">
                 </div>
@@ -148,12 +159,12 @@ function readURL(input) {
         </div>
     </div>
 </div>
-<div class="modal fade" id="detailpromotion" tabindex="-1" role="dialog" aria-labelledby="detailpromotionLabel"
+<div class="modal fade" id="editppromotion" tabindex="-1" role="dialog" aria-labelledby="editppromotionLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="detailpromotionLabel">ข้อมูลโปรโมชั่น</h5>
+                <h5 class="modal-title" id="editppromotionLabel">ข้อมูลโปรโมชั่น</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -186,18 +197,18 @@ function readURL(input) {
         </div>
     </div>
 </div>
-<div class="modal fade" id="editppromotion" tabindex="-1" role="dialog" aria-labelledby="editpromotionLabel"
+<div class="modal fade" id="editpromotion" tabindex="-1" role="dialog" aria-labelledby="editpromotionLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editppromotionLabel">ข้อมูลโปรโมชั่น</h5>
+                <h5 class="modal-title" id="editpromotionLabel">ข้อมูลโปรโมชั่น</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form role="form" action="models/sqladd.php" method="post" enctype="multipart/form-data">
-                <input type="hidden" value="addpromotion" name="menu">
+                <input type="hidden" value="editpromotion" name="menu">
                 <div class="modal-body">
                     <div class="form-group">
                         <label class=" form-control-label">ชื่อโปรโมชั่น</label>

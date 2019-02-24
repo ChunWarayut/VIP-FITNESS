@@ -30,10 +30,12 @@
                             <!-- <span class="inbox-num">3</span> -->
                         </li>
 
+                        <?php if($login_user['member_status'] != "admin" 
+                        ){ ?>
                         <li class="<?php if($content =="account"){echo "active ";}?> ">
                             <a href="index.php?content=account">
                             <i class="fas fa-shopping-basket"></i>ข้อมูลส่วนตัว</a>
-                        </li>
+                        </li><?PHP } ?>
 
                         <?php if($login_user['member_status'] == "admin" || 
                                 $login_user['member_status'] == "member"
@@ -68,16 +70,16 @@
                         <?php if($login_user['member_status'] == "admin" || 
                                 $login_user['member_status'] == "sale"
                         ){ ?>
-                        <li class="<?php if($content =="promotion"){echo "active ";}?> ">
+                        <!-- <li class="<?php if($content =="promotion"){echo "active ";}?> ">
                             <a href="index.php?content=promotion">
                             <i class="fas fa-shopping-basket"></i>โปรโมชั่น</a>
-                        </li>
-                        <li class="<?php if($content =="team"){echo "active ";}?> ">
+                        </li> -->
+                        <!-- <li class="<?php if($content =="team"){echo "active ";}?> ">
                             <a href="#">
                             <i class="fas fa-shopping-basket"></i>ข้อมูลลูกค้า</a>
-                        </li>
-                        <li class="<?php if($content =="team"){echo "active ";}?> ">
-                            <a href="#">
+                        </li> -->
+                        <li class="<?php if($content =="comment"){echo "active ";}?> ">
+                            <a href="index.php?content=comment">
                             <i class="fas fa-shopping-basket"></i>Comment</a>
                         </li>
                         <?php } ?>                        
@@ -177,6 +179,8 @@
             require_once("page/trainer.php");
         }else if($content=="promotion"){ 
             require_once("page/promotion.php"); 
+        }else if($content=="comment"){ 
+            require_once("page/comment.php"); 
         }else { 
             require_once("page/home.php"); 
         }
