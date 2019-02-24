@@ -2,7 +2,7 @@
 $server="localhost";
 $dbname="vip_fitness";
 $username="root";
-$password="";
+$password="root123456";
 $con = mysqli_connect($server,$username,$password,$dbname);
 $res = mysqli_query($con,"SET NAMES UTF8");
 abstract class BaseModel{
@@ -10,7 +10,7 @@ abstract class BaseModel{
 	protected $host="localhost";
     
     protected $username="root";
-	protected $password="";
+	protected $password="root123456";
 	protected $db_name="vip_fitness";
 
 	function __construct(){
