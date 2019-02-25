@@ -7,7 +7,7 @@ function readURL(input) {
         }
         reader.readAsDataURL(input.files[0]);
     } else {
-        $('#image_promotion').attr('src', '../images/prootion/default.png');
+            $('#image_promotion').attr('src', '../images/prootion/default.png');
     }
 }
 </script>
@@ -45,20 +45,20 @@ function readURL(input) {
 
                         <?php if ($login_user['member_status'] == 'admin') { ?>
                         <div>
-                            <?PHP 
-                                $id=  $row['promotion_id']; 
-                                echo $id;
-                            ?>
+                            <form action="index.php?content=detailPromo&id=<?PHP echo $row['promotion_id'];   ?>" method="post">
                                 <button width="100%" class="au-btn au-btn--detail" data-toggle="modal"
                                     data-target="#detailpromotion">
                                     detail 
                                 </button>
+                            </form>
                         </div>
                         <div>
-                            <button width="100%" class="au-btn au-btn--ok" data-toggle="modal"
-                                data-target="#editpromotion">
-                                edit
-                            </button>
+                            <form action="index.php?content=detailPromo&action=update&id=<?PHP echo $row['promotion_id'];   ?>" method="post">
+                                <button width="100%" class="au-btn au-btn--ok" data-toggle="modal"
+                                    data-target="#editpromotion">
+                                    edit
+                                </button>
+                            </form>
                         </div>
                         <div>
                             <button width="100%" class="au-btn au-btn--no" data-toggle="modal"
@@ -75,14 +75,6 @@ function readURL(input) {
     </div>
 </div>
 
-<?PHP 
-include 'models/PromotionModel.php';
-$promotion_model = new PromotionModel;
-// $id = $_GET['id'];
-$promotion = $promotion_model -> getPromotionByID($id);
-print_r ($promotion);
-echo $promotion[0][promotion_id];
-?>
 <div class="modal fade" id="addpromotion" tabindex="-1" role="dialog" aria-labelledby="addpromotionLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -142,7 +134,8 @@ echo $promotion[0][promotion_id];
                 </div>
                 <div class="form-group">
                     <label class=" form-control-label">รูปภาพ</label>
-                    <img id="image_promotion" src="images/promotion/default.png" class="form-control-label">
+                    <img id="image_promotion" src="images/promotion/<?php echo $promotion[0]['promotion_image']; ?>"
+                    class="form-control-label">
                     <input accept=".jpg , .png" type="file" id="promotion_image" name="promotion_image"
                         class="form-control" onChange="readURL(this);">
                 </div>

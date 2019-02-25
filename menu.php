@@ -181,6 +181,10 @@
             require_once("page/promotion.php"); 
         }else if($content=="comment"){ 
             require_once("page/comment.php"); 
+        }else if($content=="detailPromo"){ 
+            require_once("page/detailPromo.php"); 
+        }else if($content=="updatePromotion"){ 
+            require_once("page/updatePromotion.php"); 
         }else { 
             require_once("page/home.php"); 
         }
