@@ -61,10 +61,12 @@ function readURL(input) {
                             </form>
                         </div>
                         <div>
-                            <button width="100%" class="au-btn au-btn--no" data-toggle="modal"
-                                data-target="#mediumModal">
-                                delete
-                            </button>
+                            <form action="index.php?content=detailPromo&action=delete&id=<?PHP echo $row['promotion_id'];   ?>" method="post">
+                                <button width="100%" class="au-btn au-btn--no" data-toggle="modal"
+                                    data-target="#mediumModal">
+                                    delete
+                                </button>
+                            </form>
                         </div>
                         <?PHP  } ?>
                     </div>

@@ -55,7 +55,7 @@ class PromotionModel extends BaseModel{
         }
     }
 
-    function updatePromotionByID($id,$data = []){
+    function updatePromotionByID($id,$data = [], $promotion_image){
         $data['promotion_name']=mysqli_real_escape_string(static::$db,$data['promotion_name']);
         $data['promotion_image']=mysqli_real_escape_string(static::$db,$data['promotion_image']);
         $data['promotion_detail']=mysqli_real_escape_string(static::$db,$data['promotion_detail']);
@@ -65,16 +65,16 @@ class PromotionModel extends BaseModel{
                     vip_promotion 
                 SET 
                     `promotion_name` = '".$data['promotion_name']."', 
-                    `promotion_image` =  '".$data['promotion_image']."', 
+                    `promotion_image` =  '$promotion_image', 
                     `promotion_detail` =  '".$data['promotion_detail']."', 
                     `promotion_adddate` =  '".$data['promotion_adddate']."'
                 WHERE 
                     `vip_promotion`.`promotion_id` = '$id'
             ";
         
-        echo "<pre>";
-        print_r($sql);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($sql);
+        // echo "</pre>";
         if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
             return 1;
         }else {
@@ -83,7 +83,7 @@ class PromotionModel extends BaseModel{
     }
 
     function deletePromotionByID($id){
-        $sql = " DELETE FROM vip_member WHERE member_id = '$id' ";
+        $sql = " DELETE FROM vip_promotion WHERE promotion_id = '$id' ";
         if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
             return 1;
         }else {
