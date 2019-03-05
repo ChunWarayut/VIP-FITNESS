@@ -3,7 +3,7 @@
 
 require_once('models/UserModel.php');
 
-$user_model = new UserModel;
+$member_model = new UserModel;
 
 
 $path = "page/accout/";
@@ -21,78 +21,57 @@ $target_dir = "images/user/";
 // echo $login_user['member_id'];
 
 
-$user_id = $_GET['id'];
+$member_id = $_GET['id'];
 
 if(!isset($_GET['action'])){
-    $user = $user_model->getUserByMember();
+    $member = $member_model->getUserByMember();
     // echo "<pre>";
-    // print_r($user);
+    // print_r($member);
     // echo "</pre>";
     require_once($path.'view.php');
 }else if ($_GET['action'] == 'insert'){
     require_once($path.'insert.php');
 }else if ($_GET['action'] == 'update'){
-    $user = $user_model->getUserByID($user_id);
+    $member = $member_model->getUserByID($member_id);
         require_once($path.'update.php');
 }else if ($_GET['action'] == 'delete'){
-    $user = $user_model->getUserByID($user_id);
-    $target_file = $target_dir .$user['user_image'];
+    $member = $member_model->getUserByID($member_id);
+    $target_file = $target_dir .$member['member_image'];
     if (file_exists($target_file)) {
         unlink($target_file);
     }
-    $user = $user_model->deleteUserById($user_id);
+    $member = $member_model->deleteUserById($member_id);
     ?>
     <script>window.location="index.php?content=accout"</script>
     <?php
 }else if ($_GET['action'] == 'add'){
-    if(isset($_POST['user_firstname'])){
+    if(isset($_POST['member_firstname'])){
         $check = true;
         $data = [];
-        $data['user_type_id'] = trim($_POST['user_type_id']);
-        $data['user_firstname'] = trim($_POST['user_firstname']);
-        $data['user_image'] = trim($_POST['user_image']);
-        $data['user_lastname'] = trim($_POST['user_lastname']);
-        $data['user_phone'] = trim($_POST['user_phone']);
-        $data['user_email'] = trim($_POST['user_email']);
-        $data['user_facebook'] = trim($_POST['user_facebook']);
-        $data['user_line'] = trim($_POST['user_line']);
-        $data['user_address'] = trim($_POST['user_address']);
-        $data['user_province'] = trim($_POST['user_province']);
-        $data['user_amphur'] = trim($_POST['user_amphur']);
-        $data['user_district'] = trim($_POST['user_district']);
-        $data['user_zipcode'] = trim($_POST['user_zipcode']);
-        $data['user_username'] = trim($_POST['user_username']);
-        $data['user_password'] = trim($_POST['user_password']);
+        $data['member_typemember'] = trim($_POST['member_typemember']);
+        $data['member_firstname'] = trim($_POST['member_firstname']);
+        $data['member_image'] = trim($_POST['member_image']);
+        $data['member_lastname'] = trim($_POST['member_lastname']);
+        $data['member_tel'] = trim($_POST['member_tel']);
+        $data['member_sex'] = trim($_POST['member_sex']);
+        $data['member_birthday'] = trim($_POST['member_birthday']);
+        $data['member_start'] = trim($_POST['member_start']);
+        $data['member_address'] = trim($_POST['member_address']);
+        $data['member_expiry'] = trim($_POST['member_expiry']);
+        $data['member_status'] = trim($_POST['member_status']);
+        $data['member_keeper'] = trim($_POST['member_keeper']);
+        $data['member_zipcode'] = trim($_POST['member_zipcode']);
+        $data['member_username'] = trim($_POST['member_username']);
+        $data['member_password'] = trim($_POST['member_password']);
 
-        if($_FILES['user_image']['name'] == ""){
-            $data['user_image'] = "";
-        }else {
-            $target_file = $target_dir .$date.'-'.strtolower(basename($_FILES["user_image"]["name"]));
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            // Check if file already exists
-            if (file_exists($target_file)) {
-                $error_msg =  "ขอโทษด้วย. มีไฟล์นี้ในระบบแล้ว";
-                $check = false;
-            }else if ($_FILES["user_image"]["size"] > 5000000) {
-                $error_msg = "ขอโทษด้วย. ไฟล์ของคุณต้องมีขนาดน้อยกว่า 5 MB.";
-                $check = false;
-            }else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" ) {
-                $error_msg = "ขอโทษด้วย. ระบบสามารถอัพโหลดไฟล์นามสกุล JPG, JPEG, PNG & GIF เท่านั้น.";
-                $check = false;
-            }else if (move_uploaded_file($_FILES["user_image"]["tmp_name"], $target_file)) {
-                $data['user_image'] = $date.'-'.strtolower(basename($_FILES["user_image"]["name"]));
-            } else {
-                $error_msg =  "ขอโทษด้วย. ระบบไม่สามารถอัพโหลดไฟล์ได้.";
-                $check = false;
-            } 
-        }
+
 
         if($check == false){
             ?>  <script>  alert('<?php echo $error_msg; ?>'); window.history.back(); </script>  <?php
         }else{
-            $user = $user_model->insertUser($data);
+            $member = $member_model->insertUser($data);
 
-            if($user){
+            if($member){
                 ?> <script>window.location="index.php?content=accout"</script> <?php
             }else{
                 ?>  <script> window.history.back(); </script> <?php
@@ -101,64 +80,32 @@ if(!isset($_GET['action'])){
     }else{
         ?> <script> window.history.back(); </script> <?php
     }
-}else if ($_GET['action'] == 'edit' && $login_user['user_type_id'] == 1){
-    if(isset($_POST['user_id'])){
+}else if ($_GET['action'] == 'edit'){
+    if(isset($_POST['member_id'])){
         $check = true;
         $data = [];
-        $data['user_type_id'] = trim($_POST['user_type_id']);
-        $data['user_firstname'] = trim($_POST['user_firstname']);
-        $data['user_lastname'] = trim($_POST['user_lastname']);
-        $data['user_image'] = trim($_POST['user_image']);
-        $data['user_phone'] = trim($_POST['user_phone']);
-        $data['user_email'] = trim($_POST['user_email']);
-        $data['user_facebook'] = trim($_POST['user_facebook']);
-        $data['user_line'] = trim($_POST['user_line']);
-        $data['user_address'] = trim($_POST['user_address']);
-        $data['user_province'] = trim($_POST['user_province']);
-        $data['user_amphur'] = trim($_POST['user_amphur']);
-        $data['user_district'] = trim($_POST['user_district']);
-        $data['user_zipcode'] = trim($_POST['user_zipcode']);
-        $data['user_username'] = trim($_POST['user_username']);
-        $data['user_password'] = trim($_POST['user_password']);
-        $data['updateby'] = $login_user['user_id'];
-
-        if($_FILES['user_image']['name'] == ""){
-            $data['user_image'] = $_POST['user_image_o'];
-        }else {
-            $target_file = $target_dir .$date.'-'.strtolower(basename($_FILES["user_image"]["name"]));
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            // Check if file already exists
-            if (file_exists($target_file)) {
-                $error_msg =  "ขอโทษด้วย. มีไฟล์นี้ในระบบแล้ว";
-                $check = false;
-            }else if ($_FILES["user_image"]["size"] > 5000000) {
-                $error_msg = "ขอโทษด้วย. ไฟล์ของคุณต้องมีขนาดน้อยกว่า 5 MB.";
-                $check = false;
-            }else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" ) {
-                $error_msg = "ขอโทษด้วย. ระบบสามารถอัพโหลดไฟล์นามสกุล JPG, JPEG, PNG & GIF เท่านั้น.";
-                $check = false;
-            }else if (move_uploaded_file($_FILES["user_image"]["tmp_name"], $target_file)) {
-
-                $data['user_image'] = $date.'-'.strtolower(basename($_FILES["user_image"]["name"]));
-
-                $target_file = $target_dir . $_POST['user_image_o'];
-                if (file_exists($target_file)) {
-                    unlink($target_file);
-                }
-            } else {
-                $error_msg =  "ขอโทษด้วย. ระบบไม่สามารถอัพโหลดไฟล์ได้.";
-                $check = false;
-            } 
-        }
-        
+        $data['member_typemember'] = trim($_POST['member_typemember']);
+        $data['member_firstname'] = trim($_POST['member_firstname']);
+        $data['member_lastname'] = trim($_POST['member_lastname']);
+        $data['member_tel'] = trim($_POST['member_tel']);
+        $data['member_sex'] = trim($_POST['member_sex']);
+        $data['member_birthday'] = trim($_POST['member_birthday']);
+        $data['member_start'] = trim($_POST['member_start']);
+        $data['member_address'] = trim($_POST['member_address']);
+        $data['member_expiry'] = trim($_POST['member_expiry']);
+        $data['member_status'] = trim($_POST['member_status']);
+        $data['member_keeper'] = trim($_POST['member_keeper']);
+        $data['member_username'] = trim($_POST['member_username']);
+        $data['member_password'] = trim($_POST['member_password']);
+    
         if($check == false){
             ?>  <script>  alert('<?php echo $error_msg; ?>'); window.history.back(); </script>  <?php
         }else{
-            $user = $user_model->updateUserByID($_POST['user_id'],$data);
+            $member = $member_model->updateUserByID($_POST['member_id'],$data);
 
-            if($user){
-                if ($login_user['user_id'] == $_POST['user_id']){
-                    $_SESSION['administrator_user'] = $user_model->getUserByID($login_user['user_id'] );
+            if($member){
+                if ($login_user['member_id'] == $_POST['member_id']){
+                    $_SESSION['administrator_user'] = $member_model->getUserByID($login_user['member_id'] );
                 }
                 ?> <script>window.location="index.php?content=accout"</script> <?php
             }else{
@@ -169,7 +116,7 @@ if(!isset($_GET['action'])){
         ?> <script> window.history.back(); </script> <?php
     }
 }else{
-    $user = $user_model->getUserBy($_GET['name'],$_GET['position'],$_GET['email']);
+    $member = $member_model->getUserBy($_GET['name'],$_GET['position'],$_GET['email']);
     require_once($path.'view.php');
 }
 ?>

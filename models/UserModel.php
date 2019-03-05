@@ -62,6 +62,25 @@ class UserModel extends BaseModel{
         }
     }
 
+    function getUserByTrainer(){
+        $sql = "SELECT * 
+        FROM vip_member
+        WHERE `member_status` = 'trainer'
+        
+        ORDER BY CONCAT(vip_member.member_firstname,' ',vip_member.member_lastname) 
+        ";
+        // echo $sql;
+
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            $data = [];
+            while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                $data[] = $row;
+            }
+            $result->close();
+            return $data;
+        }
+    }
+
     function getUserByTrainerID($ID){
         $sql = "SELECT * 
         FROM vip_member
@@ -98,22 +117,27 @@ class UserModel extends BaseModel{
 
     function updateUserByID($id,$data = []){
         $data['member_id']=mysqli_real_escape_string(static::$db,$data['member_id']);
-        $data['member_username']=mysqli_real_escape_string(static::$db,$data['member_username']);
-        $data['member_password']=mysqli_real_escape_string(static::$db,$data['member_password']);
-        $data['member_firstname']=mysqli_real_escape_string(static::$db,$data['member_firstname']);
-        $data['member_lastname']=mysqli_real_escape_string(static::$db,$data['member_lastname']);
-        $data['member_image']=mysqli_real_escape_string(static::$db,$data['member_image']);
-        $data['member_sex']=mysqli_real_escape_string(static::$db,$data['member_sex']);
-        $data['member_birthday']=mysqli_real_escape_string(static::$db,$data['member_birthday']);
-        $data['member_address']=mysqli_real_escape_string(static::$db,$data['member_address']);
-        $data['member_tel']=mysqli_real_escape_string(static::$db,$data['member_tel']);
-        $data['member_issue']=mysqli_real_escape_string(static::$db,$data['member_issue']);
-        $data['member_expiry']=mysqli_real_escape_string(static::$db,$data['member_expiry']);
-        $data['member_status']=mysqli_real_escape_string(static::$db,$data['member_status']);
-        $data['member_around']=mysqli_real_escape_string(static::$db,$data['member_around']);
+        
+
+        
+        $data['member_typemember'] = mysqli_real_escape_string(static::$db,$data['member_typemember']);
+        $data['member_firstname'] = mysqli_real_escape_string(static::$db,$data['member_firstname']);
+        $data['member_lastname'] = mysqli_real_escape_string(static::$db,$data['member_lastname']);
+        $data['member_tel'] = mysqli_real_escape_string(static::$db,$data['member_tel']);
+        $data['member_sex'] = mysqli_real_escape_string(static::$db,$data['member_sex']);
+        $data['member_birthday'] = mysqli_real_escape_string(static::$db,$data['member_birthday']);
+        $data['member_start'] = mysqli_real_escape_string(static::$db,$data['member_start']);
+        $data['member_address'] = mysqli_real_escape_string(static::$db,$data['member_address']);
+        $data['member_expiry'] = mysqli_real_escape_string(static::$db,$data['member_expiry']);
+        $data['member_status'] = mysqli_real_escape_string(static::$db,$data['member_status']);
+        $data['member_keeper'] = mysqli_real_escape_string(static::$db,$data['member_keeper']);
+        $data['member_username'] = mysqli_real_escape_string(static::$db,$data['member_username']);
+        $data['member_password'] = mysqli_real_escape_string(static::$db,$data['member_password']);
+
+        
 
         $sql = "UPDATE vip_member SET 
-        member_id = '".$data['member_id']."', 
+        member_typemember = '".$data['member_typemember']."', 
         member_username = '".$data['member_username']."', 
         member_password = '".$data['member_password']."', 
         member_firstname = '".$data['member_firstname']."', 
@@ -123,10 +147,10 @@ class UserModel extends BaseModel{
         member_birthday = '".$data['member_birthday']."',
         member_address = '".$data['member_address']."',
         member_tel = '".$data['member_tel']."',
-        member_issue = '".$data['member_issue']."',
+        member_start = '".$data['member_start']."',
         member_expiry = '".$data['member_expiry']."',
         member_status = '".$data['member_status']."',
-        member_around = '".$data['member_around']."'
+        member_keeper = '".$data['member_keeper']."'
      
         WHERE member_id = $id ";
         
@@ -139,36 +163,35 @@ class UserModel extends BaseModel{
 
     function insertUser($data=[]){
         $sql = " INSERT INTO vip_member(
-            member_id,
-            member_username,
-            member_password,
-            member_firstname,
-            member_lastname,
-            member_image,
-            member_sex,
-            member_birthday,
-            member_address,
-            member_tel,
-            member_issue,
-            member_expiry,
-            member_status,
-            member_around
-        ) VALUES ('".
-        mysqli_real_escape_string(static::$db,$data['member_id'])."','".
+            `member_id`,
+            `member_username`,
+            `member_password`,
+            `member_firstname`,
+            `member_lastname`,
+            `member_sex`,
+            `member_birthday`,
+            `member_address`,
+            `member_tel`,
+            `member_start`,
+            `member_expiry`,
+            `member_typemember`,
+            `member_status`,
+            `member_keeper`
+        ) VALUES (
+        NULL,'".
         mysqli_real_escape_string(static::$db,$data['member_username'])."','".
         mysqli_real_escape_string(static::$db,$data['member_password'])."','".
         mysqli_real_escape_string(static::$db,$data['member_firstname'])."','".
         mysqli_real_escape_string(static::$db,$data['member_lastname'])."','".
-        mysqli_real_escape_string(static::$db,$data['member_image'])."','".
-        mysqli_real_escape_string(static::$db,$data['member_facebook'])."','".
         mysqli_real_escape_string(static::$db,$data['member_sex'])."','".
         mysqli_real_escape_string(static::$db,$data['member_birthday'])."','".
         mysqli_real_escape_string(static::$db,$data['member_address'])."','".
         mysqli_real_escape_string(static::$db,$data['member_tel'])."','".
-        mysqli_real_escape_string(static::$db,$data['member_issue'])."','".
+        mysqli_real_escape_string(static::$db,$data['member_start'])."','".
         mysqli_real_escape_string(static::$db,$data['member_expiry'])."','".
+        mysqli_real_escape_string(static::$db,$data['member_typemember'])."','".
         mysqli_real_escape_string(static::$db,$data['member_status'])."','".
-        mysqli_real_escape_string(static::$db,$data['member_around'])."'
+        mysqli_real_escape_string(static::$db,$data['member_keeper'])."'
         )";
 
         if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
