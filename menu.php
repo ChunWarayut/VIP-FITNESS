@@ -37,6 +37,13 @@
                             <i class="fas fa-shopping-basket"></i>ข้อมูลส่วนตัว</a>
                         </li><?PHP } ?>
 
+                        <?php if($login_user['member_status'] == "admin" 
+                        ){ ?>
+                        <li class="<?php if($content =="accout"){echo "active ";}?> ">
+                            <a href="index.php?content=accout">
+                            <i class="fas fa-shopping-basket"></i>จัดกาารข้อมูลลูกค้า</a>
+                        </li><?PHP } ?>
+
                         <?php if($login_user['member_status'] == "admin" || 
                                 $login_user['member_status'] == "member"
                         ){ ?>
@@ -142,6 +149,9 @@
                     </div>
                     <nav class="navbar-sidebar2">
                         <ul class="list-unstyled navbar__list">
+
+
+
                             <li class="<?php if($content =="home"){echo "active";}?> ">
                                 <a href="inbox.html">
                                     <i class="fas fa-chart-bar"></i>หน้าแรก</a>
@@ -157,6 +167,10 @@
                                 <i class="fas fa-shopping-basket"></i>รายงาน</a>
                             <?php } ?>
                             </li>
+
+
+
+
                         </ul>
                     </nav>
                 </div>
@@ -183,6 +197,10 @@
             require_once("page/comment.php"); 
         }else if($content=="detailPromo"){ 
             require_once("page/detailPromo.php"); 
+        }else if($content=="updatePromotion"){ 
+            require_once("page/updatePromotion.php"); 
+        }else if($content=="accout"){ 
+            require_once("page/accout/index.php"); 
         }else if($content=="updatePromotion"){ 
             require_once("page/updatePromotion.php"); 
         }else { 

@@ -28,12 +28,47 @@ class UserModel extends BaseModel{
         }
     }
 
-    function getUserBy($keyword){
+    function getUserBy(){
         $sql = "SELECT * 
-        FROM vip_member 
-        LEFT JOIN vip_member_type ON vip_member.member_type_id = vip_member_type.member_type_id
+        FROM vip_member
         ORDER BY CONCAT(vip_member.member_firstname,' ',vip_member.member_lastname) 
         ";
+        // echo $sql;
+
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            $data = [];
+            while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                $data[] = $row;
+            }
+            $result->close();
+            return $data;
+        }
+    }
+    function getUserByMember(){
+        $sql = "SELECT * 
+        FROM vip_member
+        WHERE member_status = 'member'
+        ORDER BY CONCAT(vip_member.member_firstname,' ',vip_member.member_lastname) 
+        ";
+        // echo $sql;
+
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            $data = [];
+            while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                $data[] = $row;
+            }
+            $result->close();
+            return $data;
+        }
+    }
+
+    function getUserByTrainerID($ID){
+        $sql = "SELECT * 
+        FROM vip_member
+        WHERE `member_id` = '$ID'
+        ORDER BY CONCAT(vip_member.member_firstname,' ',vip_member.member_lastname) 
+        ";
+        // echo $sql;
 
         if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
             $data = [];
