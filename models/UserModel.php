@@ -142,7 +142,6 @@ class UserModel extends BaseModel{
         member_password = '".$data['member_password']."', 
         member_firstname = '".$data['member_firstname']."', 
         member_lastname = '".$data['member_lastname']."', 
-        member_image = '".$data['member_image']."',
         member_sex = '".$data['member_sex']."',
         member_birthday = '".$data['member_birthday']."',
         member_address = '".$data['member_address']."',
@@ -153,7 +152,7 @@ class UserModel extends BaseModel{
         member_keeper = '".$data['member_keeper']."'
      
         WHERE member_id = $id ";
-        
+        // echo $sql;
         if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
             return 1;
         }else {
@@ -194,6 +193,7 @@ class UserModel extends BaseModel{
         mysqli_real_escape_string(static::$db,$data['member_keeper'])."'
         )";
 
+        // echo $sql;
         if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
             return mysqli_insert_id(static::$db);
         }else {

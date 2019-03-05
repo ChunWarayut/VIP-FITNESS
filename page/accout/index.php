@@ -35,11 +35,6 @@ if(!isset($_GET['action'])){
     $member = $member_model->getUserByID($member_id);
         require_once($path.'update.php');
 }else if ($_GET['action'] == 'delete'){
-    $member = $member_model->getUserByID($member_id);
-    $target_file = $target_dir .$member['member_image'];
-    if (file_exists($target_file)) {
-        unlink($target_file);
-    }
     $member = $member_model->deleteUserById($member_id);
     ?>
     <script>window.location="index.php?content=accout"</script>
@@ -58,7 +53,7 @@ if(!isset($_GET['action'])){
         $data['member_start'] = trim($_POST['member_start']);
         $data['member_address'] = trim($_POST['member_address']);
         $data['member_expiry'] = trim($_POST['member_expiry']);
-        $data['member_status'] = trim($_POST['member_status']);
+        $data['member_status'] = 'member';
         $data['member_keeper'] = trim($_POST['member_keeper']);
         $data['member_zipcode'] = trim($_POST['member_zipcode']);
         $data['member_username'] = trim($_POST['member_username']);
@@ -72,9 +67,13 @@ if(!isset($_GET['action'])){
             $member = $member_model->insertUser($data);
 
             if($member){
-                ?> <script>window.location="index.php?content=accout"</script> <?php
+                ?> <script>
+                window.location="index.php?content=accout"
+                </script> <?php
             }else{
-                ?>  <script> window.history.back(); </script> <?php
+                ?>  <script>
+                 window.history.back(); 
+                 </script> <?php
             }
         }
     }else{
@@ -104,12 +103,13 @@ if(!isset($_GET['action'])){
             $member = $member_model->updateUserByID($_POST['member_id'],$data);
 
             if($member){
-                if ($login_user['member_id'] == $_POST['member_id']){
-                    $_SESSION['administrator_user'] = $member_model->getUserByID($login_user['member_id'] );
-                }
-                ?> <script>window.location="index.php?content=accout"</script> <?php
+                ?> <script>
+                window.location="index.php?content=accout"
+                </script> <?php
             }else{
-                ?>  <script> window.history.back(); </script> <?php
+                ?>  <script>
+                 window.history.back();
+                  </script> <?php
             }
         }
     }else{

@@ -1,5 +1,5 @@
-<h1>ระบบจัดการผู้ข้อมูลลูกค้า</h1>
-<h2>เพิ่ม ลบ เเก้ไข ผู้ข้อมูลลูกค้า</h2>
+<h1>ระบบจัดการข้อมูลลูกค้า</h1>
+<h2>เพิ่ม ลบ เเก้ไข ข้อมูลลูกค้า</h2>
 <div align=right>
   <a class="btn btn-primary" href="?content=accout&action=insert">
     เพิ่มข้อมูลลูกค้า
@@ -30,6 +30,7 @@
       <td class="center"><?php 
       $trainer =  $member_model->getUserByTrainerID($member[$i]['member_keeper']);
         // print_r($trainer);
+        echo $member[$i]['member_keeper'];
         $trainer = $trainer[0];
       echo $trainer['member_firstname'] .' '. $trainer['member_lastname']; 
       

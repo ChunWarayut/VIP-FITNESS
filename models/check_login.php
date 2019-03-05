@@ -19,15 +19,36 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         }else{
             echo "<script language=\"JavaScript\" type=\"text/javascript\"> window.parent.error();</script>";
         }
-        header("Location: ../index.php");
+        
+        
+        ?>
+        <script>
+            window.location=" ../index.php"
+        </script>
+        <?PHP
+        
 
     }else{
-        echo 'b';
-        header("Location: ../index.php");
+        
+        
+        ?>
+        <script>
+            window.location=" ../index.php"
+        </script>
+        <?PHP
+        
+
+
     }
 }else{
-    echo 'c';
-
-    header("Location: ../index.php");
+    
+    
+    ?>
+    <script>
+        window.location=" ../index.php"
+    </script>
+    <?PHP
+    
+    
 }
 ?>

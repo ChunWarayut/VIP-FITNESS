@@ -1,18 +1,5 @@
-<script>
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#img_member').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    } else {
-        $('#img_member').attr('src', 'images/user/default.png');
-    }
-}
-</script>
 
-<h1>เเก้ไขข้อมูลข้อมูลลูกค้า</h1>
+<h1>เพิ่มข้อมูลข้อมูลลูกค้า</h1>
 <div align="right">
 
 </div>
@@ -93,7 +80,7 @@ function readURL(input) {
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label> วันที่หมดอายุ </label>
-                        <input id="member_expiry" name="อ" class="form-control"
+                        <input id="member_expiry" name="member_expiry" class="form-control"
                             value="<?php echo $member['member_expiry']?>" autocomplete="off">
                     </div>
                 </div>
@@ -121,7 +108,7 @@ function readURL(input) {
     //   print_r ($trainer);  
       ?>
 
-                <select class="form-control  custom-select" id="room_type_id" name="room_type_id">
+                <select class="form-control  custom-select" id="member_keeper" name="member_keeper">
                     <?PHP 
                     for ($i=0; $i < count($trainer); $i++) { ?>
                     <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP if($trainer[$i]['member_id'] == $member['member_keeper']){echo 'selected';}?>> 
@@ -141,6 +128,7 @@ function readURL(input) {
 
     <div align="right">
         <input type="hidden" id="member_id" name="member_id" value="<?php echo $member['member_id'] ?>" />
+        <input type="hidden" id="member_status" name="member_status" value="<?php echo $member['member_status'] ?>" />
         <button type="button" class="btn btn-default" onclick="window.location='?content=accout';">ย้อนกลับ</button>
         <button type="reset" class="btn btn-primary">ล้างข้อมูล</button>
         <button name="submit" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
