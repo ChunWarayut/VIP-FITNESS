@@ -44,6 +44,27 @@ class UserModel extends BaseModel{
             return $data;
         }
     }
+
+    function getTanitaBy($id, $time){
+        $sql = "SELECT * 
+                FROM `vip_tanita` 
+                WHERE 
+                    customer_id = '$id' 
+                AND tanita_lesson = '$time'
+                ORDER BY member_id DESC
+        ";
+        // echo $sql;
+
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            $data = [];
+            while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                $data[] = $row;
+            }
+            $result->close();
+            return $data;
+        }
+    }
+
     function getUserByMember(){
         $sql = "SELECT * 
         FROM vip_member

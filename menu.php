@@ -51,7 +51,7 @@
                             <a href="index.php?content=course">
                             <i class="fas fa-shopping-basket"></i>Course</a>
                         </li><?php } ?>
-                        <?php if( $login_user['member_status'] == "member"
+                        <?php if( $login_user['member_status'] == "admin"
                         ){ ?>
                         <li class="<?php if($content =="tanita"){echo "active ";}?> ">
                             <a href="index.php?content=tanita">
@@ -187,6 +187,8 @@
             require_once("page/account.php");
         }else if($content=="tanita"){ 
             require_once("page/tanita.php");
+        }else if($content=="tanitaInsert"){ 
+            require_once("page/tanitaInsert.php");
         }else if($content=="course"){ 
             require_once("page/course.php");
         }else if($content=="trainer"){ 
