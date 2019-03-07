@@ -103,17 +103,30 @@ if(!isset($_GET['action'])){
             $member = $member_model->updateUserByID($_POST['member_id'],$data);
 
             if($member){
-                ?> <script>
+                if ($login_user['member_status'] != 'admin') {
+                    # code...
+                    
+                    ?> <script>
+                window.location="index.php?content=account"
+                </script> <?php
+                }else {
+
+                    ?> <script>
                 window.location="index.php?content=accout"
                 </script> <?php
+
+}
+
             }else{
                 ?>  <script>
-                 window.history.back();
+                //  window.history.back();
                   </script> <?php
             }
         }
     }else{
-        ?> <script> window.history.back(); </script> <?php
+        ?> <script>
+        //  window.history.back();
+         </script> <?php
     }
 }else{
     $member = $member_model->getUserBy($_GET['name'],$_GET['position'],$_GET['email']);
