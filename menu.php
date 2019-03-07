@@ -44,13 +44,20 @@
                             <i class="fas fa-shopping-basket"></i>จัดกาารข้อมูลลูกค้า</a>
                         </li><?PHP } ?>
 
+
+<!-- 
+
                         <?php if($login_user['member_status'] == "admin" || 
                                 $login_user['member_status'] == "member"
                         ){ ?>
                         <li class="<?php if($content =="course"){echo "active ";}?> ">
                             <a href="index.php?content=course">
                             <i class="fas fa-shopping-basket"></i>Course</a>
-                        </li><?php } ?>
+                        </li><?php } ?> -->
+
+
+
+
                         <?php if( $login_user['member_status'] == "admin"
                         ){ ?>
                         <li class="<?php if($content =="tanita"){echo "active ";}?> ">
