@@ -1,6 +1,6 @@
 
 
-<form id="form_target" role="form" method="post" action="index.php?content=comment&action=insert">
+<form id="form_target" role="form" method="post" action="index.php?content=comment&action=add">
   <table width="100%" border="0" align="center">
     
 <tr>
@@ -23,20 +23,23 @@ while($row=mysqli_fetch_array($result)){
 
 $id_chk = $row['id_question']; //รหัสคำถาม
 $name = $row['question']; // ชื่อคำถาม
-// print_r($id_chk);
+// print_r($comment);
 
 ?>
 
     <tr>
       <td width="574"><?=$name?> </td>
-      <td width="70" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_1" type="radio" value="5"></td>
-      <td width="63" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_2" type="radio" value="4"></td>
-      <td width="71" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_3" type="radio" value="3"></td>
-      <td width="65" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_4" type="radio" value="2"></td>
-      <td width="81" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_5" type="radio" value="1"></td>
+      <td width="70" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_1" type="radio" <?PHP if('radionNo'. $i .'_1' == 5) { echo 'checked'; } ?> value="5"></td>
+      <td width="63" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_2" type="radio" <?PHP if('radionNo'. $i .'_2' == 4) { echo 'checked'; } ?> value="4"></td>
+      <td width="71" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_3" type="radio" <?PHP if('radionNo'. $i .'_3' == 3) { echo 'checked'; } ?> value="3"></td>
+      <td width="65" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_4" type="radio" <?PHP if('radionNo'. $i .'_4' == 2) { echo 'checked'; } ?> value="2"></td>
+      <td width="81" align="center"><input name="radionNo<?=$i;?>" id="radionNo<?=$i;?>_5" type="radio" <?PHP if('radionNo'. $i .'_5' == 1) { echo 'checked'; } ?> value="1"></td>
     </tr>
 <?  
-	$i++;
+  $i++;
+  ?>
+  <input type="hidden" name="idd" id="idd"  value="<? echo $i ?>">
+  <?
 	}
     
  ?>

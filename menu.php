@@ -94,7 +94,7 @@
                         <?php if( $login_user['member_status'] == "member"
                         ){ ?>
                         <li class="<?php if($content =="comment_cus"){echo "active ";}?> ">
-                            <a href="index.php?content=comment_cus">
+                            <a href="index.php?content=comment_cus&action=insert">
                                 <i class="fas fa-shopping-basket"></i>comment</a>
                         </li><?php } ?>
 
@@ -118,10 +118,10 @@
                             <a href="#">
                             <i class="fas fa-shopping-basket"></i>ข้อมูลลูกค้า</a>
                         </li> -->
-                        <li class="<?php if($content =="comment"){echo "active ";}?> ">
+                        <!-- <li class="<?php if($content =="comment"){echo "active ";}?> ">
                             <a href="index.php?content=comment">
                                 <i class="fas fa-shopping-basket"></i>Comment</a>
-                        </li>
+                        </li> -->
                         <?php } ?>
                         <?php } ?>
 
@@ -252,7 +252,7 @@
             require_once("page/comment/index.php"); 
 
         }else if($content=="comment_cus"){ 
-            require_once("page/comment/insert.php"); 
+            require_once("page/comment/index.php"); 
             
         }else if($content=="detailPromo"){ 
             require_once("page/detailPromo.php"); 

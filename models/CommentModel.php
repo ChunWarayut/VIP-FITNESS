@@ -112,6 +112,39 @@ class CommentModel extends BaseModel{
             return 0;
         }
     }
+
+
+
+
+
+
+                function insertCommentPoint($data=[]){
+                    $sql = " INSERT INTO `tb_answer`(
+                        `id`, 
+                        `id_person`, 
+                        `id_question`, 
+                        `score`
+                        ) VALUES (
+                           NULL,'".
+                        mysqli_real_escape_string(static::$db,$data['id_person'])."','". 
+                        mysqli_real_escape_string(static::$db,$data['i'])."','".
+                        mysqli_real_escape_string(static::$db,$data['radionNo'])."'
+                        )";
+                    
+                    echo $sql;
+                    if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+                        return mysqli_insert_id(static::$db);
+                    }else {
+                        return 0;
+                    }
+                }
+
+
+
+
+
+
+
 }
 ?>
 

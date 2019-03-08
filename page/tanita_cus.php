@@ -178,6 +178,7 @@ window.history.back();
         <form id="form_target" role="form" method="post" action="index.php?content=tanitaInsert&action=insert"
             enctype="multipart/form-data">
 
+            รูปที่ 1
             <?PHP 
             $tanita = $tanita_model->getTanitaBy($id, '1');
             
@@ -237,13 +238,13 @@ window.history.back();
     <div class="col-4">
         <form id="form_target" role="form" method="post" action="index.php?content=tanitaInsert&action=insert"
             enctype="multipart/form-data">
-
+ รูปที่ 2
             
             <?PHP 
             $tanita = $tanita_model->getTanitaBy($id, '2');
-            echo "<pre>";
-            print_r($tanita);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($tanita);
+            // echo "</pre>";
             ?>
 
             <input type="hidden" id="tanita_img_o" name="tanita_img_o" />
@@ -297,6 +298,7 @@ window.history.back();
         <form id="form_target" role="form" method="post" action="index.php?content=tanitaInsert&action=insert"
             enctype="multipart/form-data">
 
+            รูปที่ 3
             
             <?PHP 
             $tanita = $tanita_model->getTanitaBy($id, '3');

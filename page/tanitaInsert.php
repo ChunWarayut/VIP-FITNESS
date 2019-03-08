@@ -240,9 +240,9 @@ window.history.back();
             
             <?PHP 
             $tanita = $tanita_model->getTanitaBy($_GET['id'], '2');
-            echo "<pre>";
-            print_r($tanita);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($tanita);
+            // echo "</pre>";
             ?>
 
             <input type="hidden" id="tanita_img_o" name="tanita_img_o" />
@@ -253,7 +253,7 @@ window.history.back();
 
             <div class="form-group" align="center">
             
-                <img id="_img_1" width="400" src="<?PHP
+                <img id="_img_2" width="400" src="<?PHP
                 if ($tanita[0]['tanita_img'] != '' ) {
                     # code...
                 echo $img_path . $tanita[0]['tanita_img'];
@@ -300,9 +300,9 @@ window.history.back();
             <?PHP 
             $tanita = $tanita_model->getTanitaBy($_GET['id'], '3');
             
-            echo "<pre>";
-            print_r($tanita);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($tanita);
+            // echo "</pre>";
             ?>
 
             <input type="hidden" id="tanita_img_o" name="tanita_img_o" />
@@ -313,7 +313,7 @@ window.history.back();
 
             <div class="form-group" align="center">
             
-            <img id="_img_1" width="400" src="<?PHP
+            <img id="_img_3" width="400" src="<?PHP
             if ($tanita[0]['tanita_img'] != '' ) {
                 # code...
             echo $img_path . $tanita[0]['tanita_img'];
