@@ -159,12 +159,12 @@
                                     <i class="zmdi zmdi-menu"></i>
                                 </div>
                                 <div class="setting-menu js-right-sidebar d-none d-lg-block">
-                                    <div class="account-dropdown__body">
+                                    <!-- <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
                                             <a href="#">
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
                                             <a href="check_logout.php">
@@ -202,7 +202,7 @@
                                     <i class="fas fa-chart-bar"></i>หน้าแรก</a>
                                 <!-- <span class="inbox-num">3</span> -->
                             </li>
-                            <?php if($login_user['member_status'] == "admin"){ ?>
+                            <!-- <?php if($login_user['member_status'] == "admin"){ ?>
                             <li class="<?php if($content =="team"){echo "active ";}?> ">
                                 <a href="#">
                                     <i class="fas fa-shopping-basket"></i>สมาชิกทีม</a>
@@ -211,7 +211,7 @@
                                 <a href="#">
                                     <i class="fas fa-shopping-basket"></i>รายงาน</a>
                                 <?php } ?>
-                            </li>
+                            </li> -->
 
 
 

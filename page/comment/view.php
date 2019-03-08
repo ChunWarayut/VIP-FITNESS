@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table table-bordered table-light" >
     <thead>
         <tr>
             <th scope="col"  width="5">#</th>
