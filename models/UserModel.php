@@ -83,6 +83,24 @@ class UserModel extends BaseModel{
         }
     }
 
+    function getUserByTrainerCusID($id){
+        $sql = "SELECT * 
+        FROM vip_member
+        WHERE member_keeper = '$id'
+        ORDER BY CONCAT(vip_member.member_firstname,' ',vip_member.member_lastname) 
+        ";
+        // echo $sql;
+
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            $data = [];
+            while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                $data[] = $row;
+            }
+            $result->close();
+            return $data;
+        }
+    }
+
     function getUserByTrainer(){
         $sql = "SELECT * 
         FROM vip_member
