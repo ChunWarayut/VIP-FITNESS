@@ -10,11 +10,18 @@ $path = "page/comment/";
 
 
 $comment = $comment_model -> getCommentByMemberID();
+$comment_by_id = $comment_model -> getCommentByID($login_user['member_id']);
 
-// print_r($comment);
+
+
+$member_id =  $login_user['member_id'];
+$comment_point = $comment_model -> getCommentPointByID($member_id);
+// print_r($comment_by_id);
 
 
 if(!isset($_GET['action'])){
+    
+    $comment = $comment_model -> getCommentByMemberID();
     require_once($path.'view.php');
     
 
@@ -36,30 +43,27 @@ if(!isset($_GET['action'])){
 //--------------------------------------------------------------------------
 
 }else if ($_GET['action'] == 'add'){
-    // echo 9;
     $id_chk= $_POST['idd'] ;
-    // echo $id_chk;
     $data = [];
-	for($i=1;$i<=($id_chk);$i++) 
+	for($i=1;$i < ($id_chk);$i++) 
     {			
             if($_POST["radionNo".$i] != "") 
         {	
-            $data['id_person'] = ($login_user['member_id']);
+            $data['id_person'] = $member_id;
             $data['i'] = ($i);
             $data['radionNo'] = ($_POST["radionNo".$i]);	
-            // echo "<pre>";
-            // print_r($data);
-            // echo "</pre>";
             $comment = $comment_model->insertCommentPoint($data);
         }
 
     }	
 
+    $data1 = [];
+    $data1['comment_detail'] = $_POST['comment_detail'] ;
+    $data1['member_id'] = $login_user['member_id'];
 
-
-    // $comment = $comment_model->deleteCommentByID($_GET['id']);
+    $comment = $comment_model -> insertComment($data1)
     ?>
-    <!-- <script>window.location="index.php?content=comment"</script> -->
+    <script>window.location="index.php?content=comment&action=insert"</script>
     <?php
 
 //--------------------------------------------------------------------------

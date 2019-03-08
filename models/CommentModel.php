@@ -39,11 +39,34 @@ class CommentModel extends BaseModel{
         `vip_comment`
     WHERE
       
-        comment_id = '$comment_id'
+        member_id = '$comment_id'
         ORDER BY vip_comment.comment_id
         ";
         // echo "<pre>";
-        // print_r();
+        // print_r($sql);
+        // echo "</pre>";
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            $data = [];
+            while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                $data[] = $row;
+            }
+            $result->close();
+            return $data;
+        }
+    }
+
+    function getCommentPointByID($comment_id) {
+        $sql = " SELECT
+        *
+    FROM
+        `tb_answer`
+    WHERE
+        `id_person` = '$comment_id'
+        GROUP BY `id_question`
+        ORDER BY id
+        ";
+        // echo "<pre>";
+        // print_r($sql);
         // echo "</pre>";
         if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
             $data = [];
@@ -118,26 +141,53 @@ class CommentModel extends BaseModel{
 
 
 
-                function insertCommentPoint($data=[]){
-                    $sql = " INSERT INTO `tb_answer`(
-                        `id`, 
-                        `id_person`, 
-                        `id_question`, 
-                        `score`
-                        ) VALUES (
-                           NULL,'".
-                        mysqli_real_escape_string(static::$db,$data['id_person'])."','". 
-                        mysqli_real_escape_string(static::$db,$data['i'])."','".
-                        mysqli_real_escape_string(static::$db,$data['radionNo'])."'
-                        )";
-                    
-                    echo $sql;
-                    if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
-                        return mysqli_insert_id(static::$db);
-                    }else {
-                        return 0;
-                    }
-                }
+    function insertCommentPoint($data=[]){
+        $sql = " INSERT INTO `tb_answer`(
+            `id`, 
+            `id_person`, 
+            `id_question`, 
+            `score`
+            ) VALUES (
+                NULL,'".
+            mysqli_real_escape_string(static::$db,$data['id_person'])."','". 
+            mysqli_real_escape_string(static::$db,$data['i'])."','".
+            mysqli_real_escape_string(static::$db,$data['radionNo'])."'
+            )";
+        
+        // echo $sql;
+        if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            return mysqli_insert_id(static::$db);
+        }else {
+            return 0;
+        }
+    }
+
+    function insertComment($data1=[]){
+        $sql = " INSERT
+        INTO
+            `vip_comment`(
+                `comment_id`,
+                `comment_detail`,
+                `comment_date`,
+                `member_id`
+            )
+        VALUES(
+            NULL,'".
+            mysqli_real_escape_string(static::$db,$data1['comment_detail'])."', 
+            NULL ,'".
+            mysqli_real_escape_string(static::$db,$data1['member_id'])."'
+        )";
+        
+        
+        
+        
+        // echo $sql;
+        if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            return mysqli_insert_id(static::$db);
+        }else {
+            return 0;
+        }
+    }
 
 
 
