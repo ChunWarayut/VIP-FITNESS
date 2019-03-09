@@ -1,7 +1,12 @@
-<h1>ระบบจัดการข้อมูลลูกค้า</h1>
-<h2>เพิ่ม ลบ เเก้ไข ข้อมูลลูกค้า</h2>
+
+<div class="card">
+  <div class="card-body">
+  <h1>ระบบจัดการข้อมูลลูกค้า</h1>
 <div align=right>
-  <a class="btn btn-primary" href="?content=accout&action=insert">
+  </div>
+</div>
+
+<a class="btn btn-primary" href="?content=accout&action=insert">
     เพิ่มข้อมูลลูกค้า
   </a>
 

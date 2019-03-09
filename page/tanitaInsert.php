@@ -170,6 +170,19 @@ window.history.back();
 
 
             ?>
+
+            
+<div class="card">
+  <div class="card-header">
+  
+  <h1>
+  เพิ่ม Tanita
+  </h1>
+  </div>
+  <br>
+
+
+
 <div class="row">
 
 
@@ -207,26 +220,48 @@ window.history.back();
                 
                 
                 ?> " class="img-fluid" alt="">
+
+                
+<?PHP if ($tanita[0]['tanita_img'] == "" || $tanita[0]['tanita_img'] == null) { ?>
                 <input accept=".jpg , .png" type="file" id="tanita_img_1" name="tanita_img" class="form-control"
                     style="margin: 14px 0 0 0 ;" onChange="readURL_1(this);">
+
+
             </div>
             <div class="col">
 
+
+
+
+
+            <?PHP 
+            
+require_once('models/UserModel.php');
+
+$member_model = new UserModel;
+
+$trainer =  $member_model->getUserByTrainer();
+    //   print_r ($trainer);  
+      ?>
+
+
                 <select class="form-control  custom-select" id="member_id" name="member_id">
-                    <option value="">เลือก tanita</option>
-                    <?PHP echo "ggg";?>
+                    <option value="">เลือก tanita</option> <?PHP 
+                    for ($i=0; $i < count($trainer); $i++) { ?>
+                    <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP if($_GET['t_id'] ==  $trainer[$i]['member_id']) { echo 'selected';} ?>>
+                    <?PHP echo $trainer[$i]['member_firstname']
+                        .' '.  $trainer[$i]['member_lastname'];?>
                     </option>
-                    <?PHP $sql="SELECT * FROM `vip_member` WHERE `member_status`= 'member'";
-                    $i = 1;
-                    $result= mysqli_query($con,$sql);
-                    while($row=mysqli_fetch_array($result)){ ?> ?>
-                    <option value="<?PHP echo $row['member_id'];?>">
-                        <?PHP echo $row['member_firstname'];?>
-                    </option>
-                    <?PHP } ?>
+                    <?PHP }?>
                     <option value=""> อื่น ๆ </option>
                 </select>
             <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
+            <?PHP } else {
+    # code...
+
+    
+} ?>
+
             </div>
 
         </form>
@@ -267,26 +302,49 @@ window.history.back();
                 
                 
                 ?> " class="img-fluid" alt="">
+
+
+
+                
+<?PHP if ($tanita[0]['tanita_img'] == "" || $tanita[0]['tanita_img'] == null) { ?>
+
                 <input accept=".jpg , .png" type="file" id="tanita_img_2" name="tanita_img" class="form-control"
                     style="margin: 14px 0 0 0 ;" onChange="readURL_2(this);">
+
+
+
             </div>
             <div class="col">
+            <?PHP 
+            
+require_once('models/UserModel.php');
+
+$member_model = new UserModel;
+
+$trainer =  $member_model->getUserByTrainer();
+    //   print_r ($trainer);  
+      ?>
+
 
                 <select class="form-control  custom-select" id="member_id" name="member_id">
-                    <option value="">เลือก tanita</option>
-                    <?PHP echo "ggg";?>
+                    <option value="">เลือก tanita</option> <?PHP 
+                    for ($i=0; $i < count($trainer); $i++) { ?>
+                    <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP if($_GET['t_id'] ==  $trainer[$i]['member_id']) { echo 'selected';} ?>>
+                    <?PHP echo $trainer[$i]['member_firstname']
+                        .' '.  $trainer[$i]['member_lastname'];?>
                     </option>
-                    <?PHP $sql="SELECT * FROM `vip_member` WHERE `member_status`= 'member'";
-                    $i = 1;
-                    $result= mysqli_query($con,$sql);
-                    while($row=mysqli_fetch_array($result)){ ?> ?>
-                    <option value="<?PHP echo $row['member_id'];?>">
-                        <?PHP echo $row['member_firstname'];?>
-                    </option>
-                    <?PHP } ?>
+                    <?PHP }?>
                     <option value=""> อื่น ๆ </option>
                 </select>
+                
+
             <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
+            
+<?PHP } else {
+    # code...
+
+    
+} ?>
             </div>
 
         </form>
@@ -327,26 +385,46 @@ window.history.back();
             
             
             ?> " class="img-fluid" alt="">
+
+                
+<?PHP if ($tanita[0]['tanita_img'] == "" || $tanita[0]['tanita_img'] == null) { ?>
+
                 <input accept=".jpg , .png" type="file" id="tanita_img_3" name="tanita_img" class="form-control"
                     style="margin: 14px 0 0 0 ;" onChange="readURL_3(this);">
+
+
             </div>
             <div class="col">
 
+            <?PHP 
+            
+require_once('models/UserModel.php');
+
+$member_model = new UserModel;
+
+$trainer =  $member_model->getUserByTrainer();
+    //   print_r ($trainer);  
+      ?>
+
+
                 <select class="form-control  custom-select" id="member_id" name="member_id">
-                    <option value="">เลือก tanita</option>
-                    <?PHP echo "ggg";?>
+                    <option value="">เลือก tanita</option> <?PHP 
+                    for ($i=0; $i < count($trainer); $i++) { ?>
+                    <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP if($_GET['t_id'] ==  $trainer[$i]['member_id']) { echo 'selected';} ?>>
+                    <?PHP echo $trainer[$i]['member_firstname']
+                        .' '.  $trainer[$i]['member_lastname'];?>
                     </option>
-                    <?PHP $sql="SELECT * FROM `vip_member` WHERE `member_status`= 'member'";
-                    $i = 1;
-                    $result= mysqli_query($con,$sql);
-                    while($row=mysqli_fetch_array($result)){ ?> ?>
-                    <option value="<?PHP echo $row['member_id'];?>">
-                        <?PHP echo $row['member_firstname'];?>
-                    </option>
-                    <?PHP } ?>
+                    <?PHP }?>
                     <option value=""> อื่น ๆ </option>
                 </select>
             <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
+
+            <?PHP } else {
+    # code...
+
+    
+} ?>
+
             </div>
 
         </form>

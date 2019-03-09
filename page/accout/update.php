@@ -1,10 +1,13 @@
+<div class="card">
+  <div class="card-header">
 
-<h1>เเก้ไขข้อมูลข้อมูลลูกค้า</h1>
-<div align="right">
+  <h1>
+  เเก้ไขข้อมูลข้อมูลลูกค้า
+  <h1>
+  </div>
+  <div class="card-body">
 
-</div>
-
-<form role="form" method="post" action="index.php?content=accout&action=edit" enctype="multipart/form-data">
+  <form role="form" method="post" action="index.php?content=accout&action=edit" enctype="multipart/form-data">
     <div class="row">
         <div class="col-lg-9">
             <div class="row">
@@ -134,3 +137,5 @@
         <button name="submit" type="submit" class="btn btn-success">บันทึกข้อมูล</button>
     </div>
 </form>
+  </div>
+</div>

@@ -1,3 +1,8 @@
+<div class="card">
+  <div class="card-body">
+    แบบสอบถามความพึงพอใจ
+  </div>
+</div>
 <table class="table table-bordered table-light" >
     <thead>
         <tr>
@@ -22,10 +27,12 @@
                 <?PHP echo $i+1 ; ?>
             </th>
             <td> <?PHP  echo $comment[$i]['member_firstname'] . ' ' . $comment[$i]['member_lastname'];  ?> </td>
-            <td> <?PHP echo $comment[$i]['comment_detail']; ?> <br>
-
-
-                                
+            <td>
+            
+                                       
+<div class="card">
+  <div class="card-body">
+ 
                     <?
                     
                     require_once('models/BaseModel.php');
@@ -55,6 +62,21 @@
             
             
             
+  </div>
+</div>
+               
+<div class="card">
+  <div class="card-body">
+ 
+            
+            
+             <?PHP echo $comment[$i]['comment_detail']; ?>
+             
+                   
+  </div>
+</div>
+
+     
             
              </td>
             <td>

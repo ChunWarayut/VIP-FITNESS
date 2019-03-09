@@ -170,6 +170,11 @@ window.history.back();
 
 
             ?>
+            <div class="card">
+  <div class="card-body">
+    ข้อมูล Tanita
+  </div>
+</div>
 <div class="row">
 
 

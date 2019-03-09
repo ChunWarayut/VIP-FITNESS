@@ -8,6 +8,15 @@ $member_model = new UserModel;
 $member = $member_model->getUserByMember();
 
 ?>
+
+<div class="card">
+  <div class="card-header">
+  
+  <h1>
+  ข้อมูล Tanita
+  </h1>
+  </div>
+  <br>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -38,7 +47,7 @@ $member = $member_model->getUserByMember();
       
       ?></td>
       <td>
-        <a href="?content=tanitaInsert&id=<?php echo $member[$i]['member_id'];?>" style="font-size: 20px;">
+        <a href="?content=tanitaInsert&id=<?php echo $member[$i]['member_id'];?>&t_id=<?php echo $member[$i]['member_keeper'];?>" style="font-size: 20px;">
           <i class="fa fa-pencil-square-o" aria-hidden="true" ></i>
         </a> 
       </td>

@@ -3,6 +3,11 @@
 
 
 <form id="form_target" role="form" method="post" onsubmit="return check();" action="index.php?content=comment&action=add">
+<div class="card">
+  <div class="card-body">
+    แบบสอบถามความพึงพอใจ
+  </div>
+</div>
   <table width="100%" border="0" align="center" class="table table-striped">
     
 <tr>

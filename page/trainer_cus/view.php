@@ -1,5 +1,11 @@
-<h1>ข้อมูลลูกค้า</h1>
-
+<h1></h1>
+<div class="card">
+  <div class="card-header">
+  
+  <h1>
+  ข้อมูลลูกค้า
+  </h1>
+  </div>
 <table class="table table-striped">
   <thead>
     <tr>
