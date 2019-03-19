@@ -5,7 +5,7 @@ require_once('models/UserModel.php');
 
 $member_model = new UserModel;
 
-$member = $member_model->getUserByMember();
+$member = $member_model->getUserByMember('member');
 
 ?>
 
