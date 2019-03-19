@@ -470,8 +470,6 @@ $trainer =  $member_model->getUserByTrainer();
                                 <?PHP echo  $tanita[0]['tanita_comment'];?>
                             </div>
                         </div>
-                        <input name="button6" type="button"  value=" - = ออกรายงาน = - " id="print"
-                            onClick="printSelection(document.getElementById('report2'))" /></td>
 
 
 
@@ -479,6 +477,8 @@ $trainer =  $member_model->getUserByTrainer();
 
                     </DIV>
 
+                        <input name="button6" type="button"  value=" - = ออกรายงาน = - " id="print"
+                            onClick="printSelection(document.getElementById('report2'))" />
 
 
 
