@@ -270,7 +270,9 @@ $trainer =  $member_model->getUserByTrainer();
             <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
             <?PHP } else {
     # code...
-
+    ?>
+<a href="">print</a>
+<?
 ?>
 
                 <div class="">
@@ -372,7 +374,9 @@ $trainer =  $member_model->getUserByTrainer();
 <?PHP } else {
     # code...
 
-    
+    ?>
+    <a href="">print</a>
+    <?
 
     
 ?>
@@ -483,8 +487,9 @@ $trainer =  $member_model->getUserByTrainer();
             <?PHP } else {
     # code...
 
-
-
+    ?>
+<a href="">print</a>
+<?
 
     
 ?>
