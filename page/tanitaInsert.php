@@ -164,7 +164,7 @@ window.history.back();
 
 ?>
 
-            <?PHP $id = $_GET['id']; ?>
+<?PHP $id = $_GET['id']; ?>
 <?PHP
             require_once('models/UserModel.php');
 
@@ -175,45 +175,45 @@ window.history.back();
 
             ?>
 
-            
+
 <div class="card">
-  <div class="card-header">
-  
-  <h1>
-  เพิ่ม Tanita
-  </h1>
-  </div>
-  <br>
+    <div class="card-header">
+
+        <h1>
+            เพิ่ม Tanita
+        </h1>
+    </div>
+    <br>
 
 
 
-<div class="row">
+    <div class="row">
 
 
 
-    <div class="col-4">
-        <form id="form_target" role="form" method="post" action="index.php?content=tanitaInsert&action=insert"
-            enctype="multipart/form-data">
+        <div class="col-4">
+            <form id="form_target" role="form" method="post" action="index.php?content=tanitaInsert&action=insert"
+                enctype="multipart/form-data">
 
-            <?PHP 
+                <?PHP 
             $tanita = $tanita_model->getTanitaBy($_GET['id'], '1');
             // echo "<pre>";
             // print_r($tanita);
             // echo "</pre>";
             ?>
-            <input type="hidden" id="tanita_img_o" name="tanita_img_o" />
-            <input type="hidden" id="tanita_id" name="tanita_id" />
-            <input type="hidden" id="tanita_lesson" name="tanita_lesson" value="1" />
-            <input type="hidden" id="customer_id" name="customer_id" value="<?PHP echo $_GET['id']; ?>" />
+                <input type="hidden" id="tanita_img_o" name="tanita_img_o" />
+                <input type="hidden" id="tanita_id" name="tanita_id" />
+                <input type="hidden" id="tanita_lesson" name="tanita_lesson" value="1" />
+                <input type="hidden" id="customer_id" name="customer_id" value="<?PHP echo $_GET['id']; ?>" />
 
 
-            <div class="form-group" align="center">
+                <div class="form-group" align="center">
 
 
-                <img id="_img_1" width="400" src="<?PHP
+                    <img id="_img_1" width="400" src="<?PHP
                 if ($tanita[0]['tanita_img'] != '' ) {
                     # code...
-                echo $img_path . $tanita[0]['tanita_img'];
+                // echo $img_path . $tanita[0]['tanita_img'];
                 } else {
                     # code...
                 echo $img_path . 'default.jpg ';
@@ -225,20 +225,20 @@ window.history.back();
                 
                 ?> " class="img-fluid" alt="">
 
-                
-<?PHP if ($tanita[0]['tanita_img'] == "" || $tanita[0]['tanita_img'] == null) { ?>
-                <input accept=".jpg , .png" type="file" id="tanita_img_1" name="tanita_img" class="form-control"
-                    style="margin: 14px 0 0 0 ;" onChange="readURL_1(this);">
+
+                    <?PHP if ($tanita[0]['tanita_img'] == "" || $tanita[0]['tanita_img'] == null) { ?>
+                    <input accept=".jpg , .png" type="file" id="tanita_img_1" name="tanita_img" class="form-control"
+                        style="margin: 14px 0 0 0 ;" onChange="readURL_1(this);">
 
 
-            </div>
-            <div class="col">
+                </div>
+                <div class="col">
 
 
 
 
 
-            <?PHP 
+                    <?PHP 
             
 require_once('models/UserModel.php');
 
@@ -249,72 +249,123 @@ $trainer =  $member_model->getUserByTrainer();
       ?>
 
 
-                <select class="form-control  custom-select" id="member_id" name="member_id">
-                    <option value="">เลือก tanita</option> <?PHP 
+                    <select class="form-control  custom-select" id="member_id" name="member_id">
+                        <option value="">เลือก tanita</option>
+                        <?PHP 
                     for ($i=0; $i < count($trainer); $i++) { ?>
-                    <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP if($_GET['t_id'] ==  $trainer[$i]['member_id']) { echo 'selected';} ?>>
-                    <?PHP echo $trainer[$i]['member_firstname']
+                        <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP
+                            if($_GET['t_id']==$trainer[$i]['member_id']) { echo 'selected' ;} ?>>
+                            <?PHP echo $trainer[$i]['member_firstname']
                         .' '.  $trainer[$i]['member_lastname'];?>
-                    </option>
-                    <?PHP }?>
-                    <option value=""> อื่น ๆ </option>
-                </select>
-                
-                <div class="">
-                    <div class="form-group">
-                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
-                        <textarea class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
-                    </div>
-                </div>
+                        </option>
+                        <?PHP }?>
+                        <option value=""> อื่น ๆ </option>
+                    </select>
 
-            <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
-            <?PHP } else {
+                    <div class="">
+                        <div class="form-group">
+                            <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                            <textarea class="form-control " id="tanita_comment" name="tanita_comment"
+                                rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
+                    <?PHP } else {
     # code...
     ?>
-<a href="">print</a>
-<?
+                           <style>
+                    @media print {
+                        #print {
+                            display: none;
+                        }
+                    }
+                    </style>
+                    <script type="text/javascript">
+                    function printSelection(node) {
+
+                        var content = node.innerHTML
+                        var pwin = window.open('');
+                        var cStyls = document.getElementsByTagName('stylesheet')
+
+                        pwin.document.open();
+                        pwin.document.write('<html><body onload="window.print()">' + content + '</body></html>');
+                        pwin.document.close();
+
+                        if (document.getElementById("print").style.display == "inline") {
+                            document.getElementById("print").style.display = "none";
+                        }
+                        setTimeout(function() {
+                            pwin.close();
+                        }, 10000);
+
+                    }
+                    </script>
+                    <DIV id="report">
+                        <img id="_img_3" width="400" src="<?PHP echo $img_path . $tanita[0]['tanita_img'];?> "
+                            style="    max-width: 100%; height: fit-content;"  alt="">
+
+                        <div class="">
+                            <div class="form-group">
+                                <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                                <?PHP echo  $tanita[0]['tanita_comment'];?>
+                            </div>
+                        </div>
+
+
+                        <!--#include file="include/css_div_print.inc" -->
+
+                    </DIV>
+
+                        <input name="button6" type="button"  value=" - = ออกรายงาน = - " id="print"
+                            onClick="printSelection(document.getElementById('report'))" />
+
+
+
+                    <?
 ?>
+<!-- 
+                    <div class="">
+                        <div class="form-group">
+                            <textarea class="form-control " id="tanita_comment" name="tanita_comment"
+                                rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+                        </div>
+                    </div> -->
 
-                <div class="">
-                    <div class="form-group">
-                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
-                        <textarea  class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
-                    </div>
-                </div>
-
-<?    
+                    <?    
 } ?>
 
-            </div>
+                </div>
 
-        </form>
-    </div>
+            </form>
+        </div>
 
 
-    <div class="col-4">
-        <form id="form_target" role="form" method="post" action="index.php?content=tanitaInsert&action=insert"
-            enctype="multipart/form-data">
+        <div class="col-4">
+            <form id="form_target" role="form" method="post" action="index.php?content=tanitaInsert&action=insert"
+                enctype="multipart/form-data">
 
-            
-            <?PHP 
+
+                <?PHP 
             $tanita = $tanita_model->getTanitaBy($_GET['id'], '2');
             // echo "<pre>";
             // print_r($tanita);
             // echo "</pre>";
             ?>
 
-            <input type="hidden" id="tanita_img_o" name="tanita_img_o" />
-            <input type="hidden" id="tanita_id" name="tanita_id" />
-            <input type="hidden" id="tanita_lesson" name="tanita_lesson" value="2" />
-            <input type="hidden" id="customer_id" name="customer_id" value="<?PHP echo $_GET['id']; ?>" />
+                <input type="hidden" id="tanita_img_o" name="tanita_img_o" />
+                <input type="hidden" id="tanita_id" name="tanita_id" />
+                <input type="hidden" id="tanita_lesson" name="tanita_lesson" value="2" />
+                <input type="hidden" id="customer_id" name="customer_id" value="<?PHP echo $_GET['id']; ?>" />
 
 
-            <div class="form-group" align="center">
-            
-                <img id="_img_2" width="400" src="<?PHP
+                <div class="form-group" align="center">
+
+                    <img id="_img_2" width="400" src="<?PHP
                 if ($tanita[0]['tanita_img'] != '' ) {
                     # code...
-                echo $img_path . $tanita[0]['tanita_img'];
+                // echo $img_path . $tanita[0]['tanita_img'];
                 } else {
                     # code...
                 echo $img_path . 'default.jpg ';
@@ -328,17 +379,17 @@ $trainer =  $member_model->getUserByTrainer();
 
 
 
-                
-<?PHP if ($tanita[0]['tanita_img'] == "" || $tanita[0]['tanita_img'] == null) { ?>
 
-                <input accept=".jpg , .png" type="file" id="tanita_img_2" name="tanita_img" class="form-control"
-                    style="margin: 14px 0 0 0 ;" onChange="readURL_2(this);">
+                    <?PHP if ($tanita[0]['tanita_img'] == "" || $tanita[0]['tanita_img'] == null) { ?>
+
+                    <input accept=".jpg , .png" type="file" id="tanita_img_2" name="tanita_img" class="form-control"
+                        style="margin: 14px 0 0 0 ;" onChange="readURL_2(this);">
 
 
 
-            </div>
-            <div class="col">
-            <?PHP 
+                </div>
+                <div class="col">
+                    <?PHP 
             
 require_once('models/UserModel.php');
 
@@ -349,63 +400,119 @@ $trainer =  $member_model->getUserByTrainer();
       ?>
 
 
-                <select class="form-control  custom-select" id="member_id" name="member_id">
-                    <option value="">เลือก tanita</option> <?PHP 
+                    <select class="form-control  custom-select" id="member_id" name="member_id">
+                        <option value="">เลือก tanita</option>
+                        <?PHP 
                     for ($i=0; $i < count($trainer); $i++) { ?>
-                    <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP if($_GET['t_id'] ==  $trainer[$i]['member_id']) { echo 'selected';} ?>>
-                    <?PHP echo $trainer[$i]['member_firstname']
+                        <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP
+                            if($_GET['t_id']==$trainer[$i]['member_id']) { echo 'selected' ;} ?>>
+                            <?PHP echo $trainer[$i]['member_firstname']
                         .' '.  $trainer[$i]['member_lastname'];?>
-                    </option>
-                    <?PHP }?>
-                    <option value=""> อื่น ๆ </option>
-                </select>
-                
+                        </option>
+                        <?PHP }?>
+                        <option value=""> อื่น ๆ </option>
+                    </select>
 
-                <div class="">
-                    <div class="form-group">
-                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
-                        <textarea class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+
+                    <div class="">
+                        <div class="form-group">
+                            <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                            <textarea class="form-control " id="tanita_comment" name="tanita_comment"
+                                rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+                        </div>
                     </div>
-                </div>
 
 
-            <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
-            
-<?PHP } else {
+                    <button type="submit"
+                        class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
+
+                    <?PHP } else {
     # code...
 
     ?>
-    <a href="">print</a>
-    <?
+    
+
+
+    <style>
+                    @media print {
+                        #print {
+                            display: none;
+                        }
+                    }
+                    </style>
+                    <script type="text/javascript">
+                    function printSelection(node) {
+
+                        var content = node.innerHTML
+                        var pwin = window.open('');
+                        var cStyls = document.getElementsByTagName('stylesheet')
+
+                        pwin.document.open();
+                        pwin.document.write('<html><body onload="window.print()">' + content + '</body></html>');
+                        pwin.document.close();
+
+                        if (document.getElementById("print").style.display == "inline") {
+                            document.getElementById("print").style.display = "none";
+                        }
+                        setTimeout(function() {
+                            pwin.close();
+                        }, 10000);
+
+                    }
+                    </script>
+                    <DIV id="report2">
+                        <img id="_img_3" width="400" src="<?PHP echo $img_path . $tanita[0]['tanita_img'];?> "
+                            style="    max-width: 100%; height: fit-content;"  alt="">
+
+                        <div class="">
+                            <div class="form-group">
+                                <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                                <?PHP echo  $tanita[0]['tanita_comment'];?>
+                            </div>
+                        </div>
+                        <input name="button6" type="button"  value=" - = พิมพ์ใบเสร็จ = - " id="print"
+                            onClick="printSelection(document.getElementById('report2'))" /></td>
+
+
+
+                        <!--#include file="include/css_div_print.inc" -->
+
+                    </DIV>
+
+
+
+
+
+                    <?
 
     
 ?>
 
-<div class="">
-    <div class="form-group">
-        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
-        <textarea  class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo $trainer[0]['tanita_comment'];?></textarea>
-    </div>
-</div>
+                    <!-- <div class="">
+                        <div class="form-group">
+                            <textarea class="form-control " id="tanita_comment" name="tanita_comment"
+                                rows="8"><?PHP echo $trainer[0]['tanita_comment'];?></textarea>
+                        </div>
+                    </div> -->
 
-<?    
+                    <?    
 
 
 
 
 
 } ?>
-            </div>
+                </div>
 
-        </form>
-    </div>
+            </form>
+        </div>
 
-    <div class="col-4">
-        <form id="form_target" role="form" method="post" action="index.php?content=tanitaInsert&action=insert"
-            enctype="multipart/form-data">
+        <div class="col-4">
+            <form id="form_target" role="form" method="post" action="index.php?content=tanitaInsert&action=insert"
+                enctype="multipart/form-data">
 
-            
-            <?PHP 
+
+                <?PHP 
             $tanita = $tanita_model->getTanitaBy($_GET['id'], '3');
             
             // echo "<pre>";
@@ -413,18 +520,18 @@ $trainer =  $member_model->getUserByTrainer();
             // echo "</pre>";
             ?>
 
-            <input type="hidden" id="tanita_img_o" name="tanita_img_o" />
-            <input type="hidden" id="tanita_id" name="tanita_id" />
-            <input type="hidden" id="tanita_lesson" name="tanita_lesson" value="3" />
-            <input type="hidden" id="customer_id" name="customer_id" value="<?PHP echo $_GET['id']; ?>" />
+                <input type="hidden" id="tanita_img_o" name="tanita_img_o" />
+                <input type="hidden" id="tanita_id" name="tanita_id" />
+                <input type="hidden" id="tanita_lesson" name="tanita_lesson" value="3" />
+                <input type="hidden" id="customer_id" name="customer_id" value="<?PHP echo $_GET['id']; ?>" />
 
 
-            <div class="form-group" align="center">
-            
-            <img id="_img_3" width="400" src="<?PHP
+                <div class="form-group" align="center">
+
+                    <img id="_img_3" width="400" src="<?PHP
             if ($tanita[0]['tanita_img'] != '' ) {
                 # code...
-            echo $img_path . $tanita[0]['tanita_img'];
+            // echo $img_path . $tanita[0]['tanita_img'];
             } else {
                 # code...
             echo $img_path . 'default.jpg ';
@@ -436,17 +543,17 @@ $trainer =  $member_model->getUserByTrainer();
             
             ?> " class="img-fluid" alt="">
 
-                
-<?PHP if ($tanita[0]['tanita_img'] == "" || $tanita[0]['tanita_img'] == null) { ?>
 
-                <input accept=".jpg , .png" type="file" id="tanita_img_3" name="tanita_img" class="form-control"
-                    style="margin: 14px 0 0 0 ;" onChange="readURL_3(this);">
+                    <?PHP if ($tanita[0]['tanita_img'] == "" || $tanita[0]['tanita_img'] == null) { ?>
+
+                    <input accept=".jpg , .png" type="file" id="tanita_img_3" name="tanita_img" class="form-control"
+                        style="margin: 14px 0 0 0 ;" onChange="readURL_3(this);">
 
 
-            </div>
-            <div class="col">
+                </div>
+                <div class="col">
 
-            <?PHP 
+                    <?PHP 
             
 require_once('models/UserModel.php');
 
@@ -457,51 +564,100 @@ $trainer =  $member_model->getUserByTrainer();
       ?>
 
 
-                <select class="form-control  custom-select" id="member_id" name="member_id">
-                    <option value="">เลือก tanita</option> <?PHP 
+                    <select class="form-control  custom-select" id="member_id" name="member_id">
+                        <option value="">เลือก tanita</option>
+                        <?PHP 
                     for ($i=0; $i < count($trainer); $i++) { ?>
-                    <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP if($_GET['t_id'] ==  $trainer[$i]['member_id']) { echo 'selected';} ?>>
-                    <?PHP echo $trainer[$i]['member_firstname']
+                        <option value="<?PHP echo $trainer[$i]['member_id'];?>" <?PHP
+                            if($_GET['t_id']==$trainer[$i]['member_id']) { echo 'selected' ;} ?>>
+                            <?PHP echo $trainer[$i]['member_firstname']
                         .' '.  $trainer[$i]['member_lastname'];?>
-                    </option>
-                    <?PHP }?>
-                    <option value=""> อื่น ๆ </option>
-                </select>
+                        </option>
+                        <?PHP }?>
+                        <option value=""> อื่น ๆ </option>
+                    </select>
 
 
 
-                
-                <div class="">
-                    <div class="form-group">
-                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
-                        <textarea class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo $trainer[0]['tanita_comment'];?></textarea>
+
+                    <div class="">
+                        <div class="form-group">
+                            <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                            <textarea class="form-control " id="tanita_comment" name="tanita_comment"
+                                rows="8"><?PHP echo $trainer[0]['tanita_comment'];?></textarea>
+                        </div>
                     </div>
-                </div>
 
 
 
 
-                
-            <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
 
-            <?PHP } else {
+                    <button type="submit"
+                        class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
+
+                    <?PHP } else {
     # code...
 
     ?>
-<a href="">print</a>
-<?
+                    <!-- <a href="">print</a>
+                    <input type="button" value="- = พิมพ์ใบเสร็จ = -" onClick="window.print()"> -->
+
+                    <?
 
     
 ?>
 
-<div class="">
-    <div class="form-group">
-        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
-        <textarea  class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
-    </div>
-</div>
+                    <style>
+                    @media print {
+                        #print {
+                            display: none;
+                        }
+                    }
+                    </style>
+                    <script type="text/javascript">
+                    function printSelection(node) {
 
-<?    
+                        var content = node.innerHTML
+                        var pwin = window.open('');
+                        var cStyls = document.getElementsByTagName('stylesheet')
+
+                        pwin.document.open();
+                        pwin.document.write('<html><body onload="window.print()">' + content + '</body></html>');
+                        pwin.document.close();
+
+                        if (document.getElementById("print").style.display == "inline") {
+                            document.getElementById("print").style.display = "none";
+                        }
+                        setTimeout(function() {
+                            pwin.close();
+                        }, 10000);
+
+                    }
+                    </script>
+                    <DIV id="report3">
+                        <img id="_img_3" width="400" src="<?PHP echo $img_path . $tanita[0]['tanita_img'];?> "
+                            style="    max-width: 100%; height: fit-content;"  alt="">
+
+                        <div class="">
+                            <div class="form-group">
+                                <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                                <?PHP echo  $tanita[0]['tanita_comment'];?>
+                            </div>
+                        </div>
+                        <input name="button6" type="button"  value=" - = พิมพ์ใบเสร็จ = - " id="print"
+                            onClick="printSelection(document.getElementById('report3'))" /></td>
+
+
+
+                        <!--#include file="include/css_div_print.inc" -->
+
+                    </DIV>
+
+
+
+
+
+                    <?    
 
 
 
@@ -510,14 +666,14 @@ $trainer =  $member_model->getUserByTrainer();
     
 } ?>
 
-            </div>
+                </div>
 
-        </form>
+            </form>
+        </div>
+
+
+
+
+
+
     </div>
-
-
-
-
-
-
-</div>
