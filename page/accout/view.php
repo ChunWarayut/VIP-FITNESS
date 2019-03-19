@@ -18,7 +18,7 @@
             <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
                 aria-describedby="basic-addon2" value="<?PHP echo $keyword; ?>">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary"  type="submit">Button</button>
+                <button class="btn btn-outline-secondary"  type="submit">ค้นหา</button>
             </div>
         </div>
     </form>
@@ -48,7 +48,7 @@
             <td class="center"><?php 
       $trainer =  $member_model->getUserByTrainerID($member[$i]['member_keeper']);
         // print_r($trainer);
-        echo $member[$i]['member_keeper'];
+        // echo $member[$i]['member_keeper'];
         $trainer = $trainer[0];
       echo $trainer['member_firstname'] .' '. $trainer['member_lastname']; 
       
