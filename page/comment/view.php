@@ -1,6 +1,8 @@
 <div class="card"><div class="card-body">แบบสอบถามความพึงพอใจ </div></div><table class="table table-bordered table-light"><thead><tr><th scope="col"width="1%">#</th><th scope="col"width="">ชื่อลูกค้า & ความคิดเห็น</th><th scope="col"width="1%"></th></tr></thead><tbody><?PHP for ($i=0;
 $i < count($comment);
-$i++) { $comment_point=$comment_model ->getCommentPointByID($comment[$i]['member_id']);
+
+$i++) {
+    $comment_point=$comment_model ->getCommentPointByID($comment[$i]['member_id']);
     ?><tr><th scope="row"><?PHP echo $i+1;
     ?></th><td><div class="card"><div class="card-body"><?PHP echo $comment[$i]['member_firstname'] . ' '. $comment[$i]['member_lastname'];
     ?></div></div><div class="card"><div class="card-body"><? require_once('models/BaseModel.php');
@@ -22,7 +24,7 @@ $i++) { $comment_point=$comment_model ->getCommentPointByID($comment[$i]['member
 
     ?></div></div><div class="card"><div class="card-body"><?PHP echo $comment[$i]['comment_detail'];
     ?></div></div></td><td><a href="?content=comment&action=delete&id=<?php echo $comment[$i]['comment_id'];?>"onclick="return confirm('คุณต้องการลบความคิดเห็นนี้หรือไม่')"
-    style="color:red; font-size: 20px;"><i class="fa fa-times"aria-hidden="true"></i></a></td></tr><?PHP 
+    style="color:red; font-size: 20px;"><i class="fa fa-times"aria-hidden="true"></i></a></td></tr><?PHP
 }
 
 ?></tbody></table>
