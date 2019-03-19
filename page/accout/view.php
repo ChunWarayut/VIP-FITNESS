@@ -5,7 +5,7 @@ $i < count($member);
 $i++) {
   ?><tr><td><?php echo $i+1;
   ?></td><td class="text-left"><?php echo $member[$i]['member_firstname'];
-  ?><?php echo $member[$i]['member_lastname'];
+  ?>&nbsp;<?php echo $member[$i]['member_lastname'];
   ?></td><td><?php echo $member[$i]['member_tel'];
   ?></td><td class="center"><?php echo $member[$i]['member_typemember'];
   ?></td><td class="center"><?php $trainer=$member_model->getUserByTrainerID($member[$i]['member_keeper']);
