@@ -65,11 +65,12 @@ class UserModel extends BaseModel{
         }
     }
 
-    function getUserByMember(){
+    function getUserByMember($keyword){
         $sql = "SELECT * 
         FROM vip_member
-        WHERE member_status = 'member'
-        ORDER BY CONCAT(vip_member.member_firstname,' ',vip_member.member_lastname) 
+        WHERE 
+        `member_firstname` LIKE '%$keyword%' OR `member_lastname` LIKE '%$keyword%' OR `member_sex` LIKE '%$keyword%' OR `member_status` LIKE '%$keyword%'
+         ORDER BY CONCAT(vip_member.member_firstname,' ',vip_member.member_lastname) 
         ";
         // echo $sql;
 
