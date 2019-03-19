@@ -20,11 +20,21 @@ $target_dir = "images/user/";
 
 // echo $login_user['member_id'];
 
+if ($_POST['keyword'] == " " || $_POST['keyword'] == null) {
+    # code...
+$keyword = "member";
+} else {
+    # code...
+$keyword = $_POST['keyword'];
+}
 
-$member_id = $_GET['id'];
+// echo $keyword;
 
+$member_id = $_POST['id'];
 if(!isset($_GET['action'])){
-    $member = $member_model->getUserByMember();
+// echo $_POST["keyword"];
+
+    $member = $member_model->getUserByMember($keyword);
     // echo "<pre>";
     // print_r($member);
     // echo "</pre>";
