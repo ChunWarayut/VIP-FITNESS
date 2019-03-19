@@ -470,7 +470,7 @@ $trainer =  $member_model->getUserByTrainer();
                                 <?PHP echo  $tanita[0]['tanita_comment'];?>
                             </div>
                         </div>
-                        <input name="button6" type="button"  value=" - = พิมพ์ใบเสร็จ = - " id="print"
+                        <input name="button6" type="button"  value=" - = ออกรายงาน = - " id="print"
                             onClick="printSelection(document.getElementById('report2'))" /></td>
 
 
@@ -600,7 +600,7 @@ $trainer =  $member_model->getUserByTrainer();
 
     ?>
                     <!-- <a href="">print</a>
-                    <input type="button" value="- = พิมพ์ใบเสร็จ = -" onClick="window.print()"> -->
+                    <input type="button" value="- = ออกรายงาน = -" onClick="window.print()"> -->
 
                     <?
 
@@ -644,7 +644,7 @@ $trainer =  $member_model->getUserByTrainer();
                                 <?PHP echo  $tanita[0]['tanita_comment'];?>
                             </div>
                         </div>
-                        <input name="button6" type="button"  value=" - = พิมพ์ใบเสร็จ = - " id="print"
+                        <input name="button6" type="button"  value=" - = ออกรายงาน = - " id="print"
                             onClick="printSelection(document.getElementById('report3'))" /></td>
 
 
