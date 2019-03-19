@@ -62,6 +62,7 @@ $target_dir = "images/tanita/";
             $data['member_id'] = $_POST['member_id'];
             $data['customer_id'] = $_POST['customer_id'];
             $data['tanita_lesson'] = $_POST['tanita_lesson'];
+            $data['tanita_comment'] = $_POST['tanita_comment'];
             //-----------------ฟังก์ชั่นสุ่มตัวเลข----------------
             $numrand = (mt_rand());
             //-----------------------------------------------
@@ -108,6 +109,7 @@ $target_dir = "images/tanita/";
             $tanita_lesson =  $data['tanita_lesson'];
             $customer_id =  $data['customer_id'];
             $member_id =  $data['member_id'];
+            $tanita_comment =  $data['tanita_comment'];
             // echo $tanita_img . $member_id;
             if($check == false){
                
@@ -124,11 +126,13 @@ window.history.back();
                     tanita_img, 
                     tanita_lesson, 
                     customer_id, 
+                    tanita_comment, 
                     member_id) VALUES (
                         NULL, 
                         '$tanita_img', 
                         '$tanita_lesson', 
                         '$customer_id', 
+                        '$tanita_comment', 
                         '$member_id'
                         )";
 // print_r($result);
@@ -255,11 +259,28 @@ $trainer =  $member_model->getUserByTrainer();
                     <?PHP }?>
                     <option value=""> อื่น ๆ </option>
                 </select>
+                
+                <div class="">
+                    <div class="form-group">
+                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                        <textarea class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+                    </div>
+                </div>
+
             <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
             <?PHP } else {
     # code...
 
-    
+?>
+
+                <div class="">
+                    <div class="form-group">
+                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                        <textarea  class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+                    </div>
+                </div>
+
+<?    
 } ?>
 
             </div>
@@ -338,12 +359,37 @@ $trainer =  $member_model->getUserByTrainer();
                 </select>
                 
 
+                <div class="">
+                    <div class="form-group">
+                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                        <textarea class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+                    </div>
+                </div>
+
+
             <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
             
 <?PHP } else {
     # code...
 
     
+
+    
+?>
+
+<div class="">
+    <div class="form-group">
+        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+        <textarea  class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo $trainer[0]['tanita_comment'];?></textarea>
+    </div>
+</div>
+
+<?    
+
+
+
+
+
 } ?>
             </div>
 
@@ -417,10 +463,44 @@ $trainer =  $member_model->getUserByTrainer();
                     <?PHP }?>
                     <option value=""> อื่น ๆ </option>
                 </select>
+
+
+
+                
+                <div class="">
+                    <div class="form-group">
+                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                        <textarea class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo $trainer[0]['tanita_comment'];?></textarea>
+                    </div>
+                </div>
+
+
+
+
+                
             <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button>
 
             <?PHP } else {
     # code...
+
+
+
+
+    
+?>
+
+<div class="">
+    <div class="form-group">
+        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+        <textarea  class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+    </div>
+</div>
+
+<?    
+
+
+
+
 
     
 } ?>

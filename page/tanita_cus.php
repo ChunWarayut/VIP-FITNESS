@@ -234,6 +234,15 @@ window.history.back();
                     <option value=""> อื่น ๆ </option>
                 </select> -->
             <!-- <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button> -->
+
+            
+            <div class="">
+                    <div class="form-group">
+                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                        <textarea  class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+                    </div>
+                </div>
+
             </div>
 
         </form>
@@ -294,6 +303,19 @@ window.history.back();
                     <option value=""> อื่น ๆ </option>
                 </select>
             <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button> -->
+
+
+            
+            <div class="">
+                    <div class="form-group">
+                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                        <textarea  class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+                    </div>
+                </div>
+
+
+
+
             </div>
 
         </form>
@@ -355,6 +377,19 @@ window.history.back();
                     <option value=""> อื่น ๆ </option>
                 </select>
             <button type="submit" class="au-btn au-btn-icon au-btn--green au-btn--small btn-right">submit</button> -->
+
+            
+            <div class="">
+                    <div class="form-group">
+                        <!-- <label>About Sub Title TH<font color="#F00"><b>*</b></font></label> -->
+                        <textarea  class="form-control " id="tanita_comment" name="tanita_comment"rows="8"><?PHP echo  $tanita[0]['tanita_comment'];?></textarea>
+                    </div>
+                </div>
+
+
+
+
+
             </div>
 
         </form>

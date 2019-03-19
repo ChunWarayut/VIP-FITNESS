@@ -39,8 +39,8 @@ function readURL(input) {
                             alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title mb-3"><?php echo $row['promotion_name']; ?></h4>
-                            <p class="card-text"><?php echo $row['promotion_image']; ?>
-                            </p>
+                            <!-- <p class="card-text"><?php echo $row['promotion_image']; ?>
+                            </p> -->
                         </div>
 
                         <?php if ($login_user['member_status'] == 'admin') { ?>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 08, 2019 at 10:53 AM
+-- Generation Time: Mar 19, 2019 at 02:55 PM
 -- Server version: 5.7.17-log
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,112 @@ SET time_zone = "+00:00";
 --
 -- Database: `vip_fitness`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_answer`
+--
+
+CREATE TABLE `tb_answer` (
+  `id` int(11) NOT NULL,
+  `id_person` int(11) NOT NULL,
+  `id_question` int(11) NOT NULL,
+  `score` int(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_answer`
+--
+
+INSERT INTO `tb_answer` (`id`, `id_person`, `id_question`, `score`) VALUES
+(32, 10, 8, 4),
+(31, 10, 7, 4),
+(30, 10, 6, 5),
+(29, 10, 5, 4),
+(28, 10, 4, 4),
+(27, 10, 3, 3),
+(26, 10, 2, 3),
+(25, 10, 1, 4),
+(24, 8, 8, 3),
+(23, 8, 7, 3),
+(22, 8, 6, 3),
+(21, 8, 5, 3),
+(20, 8, 4, 3),
+(19, 8, 3, 3),
+(18, 8, 2, 3),
+(17, 8, 1, 3),
+(33, 9, 1, 5),
+(34, 9, 2, 5),
+(35, 9, 3, 5),
+(36, 9, 4, 5),
+(37, 9, 5, 5),
+(38, 9, 6, 5),
+(39, 9, 7, 5),
+(40, 9, 8, 5),
+(41, 15, 1, 5),
+(42, 15, 2, 5),
+(43, 15, 3, 5),
+(44, 15, 4, 5),
+(45, 15, 5, 5),
+(46, 15, 6, 5),
+(47, 15, 7, 5),
+(48, 15, 8, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_person`
+--
+
+CREATE TABLE `tb_person` (
+  `id_person` int(11) NOT NULL,
+  `created` varchar(30) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `education` varchar(50) NOT NULL,
+  `age` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_person`
+--
+
+INSERT INTO `tb_person` (`id_person`, `created`, `gender`, `education`, `age`, `status`) VALUES
+(1, '30-10-2013 09:46:53', 'หญิง', 'ปริญญาตรี', 'อายุระหว่าง 21 - 30 ปี', 'เจ้าหน้าที่'),
+(2, '30-10-2013 09:47:30', 'ชาย', 'มัธยมศึกษาตอนต้น/ตอนปลาย/เทียบเท่า', 'อายุ ต่ำกว่า 20 ปี', 'นักเรียน/นักศึกษา'),
+(3, '30-10-2013 09:48:40', 'หญิง', 'สูงกว่าปริญญาตรี', 'อายุระหว่าง 31 - 40 ปี', 'ศิษย์เก่า'),
+(4, '30-10-2013 09:49:07', 'หญิง', 'สูงกว่าปริญญาตรี', 'อายุ 60 ปีขึ้นไป', 'ประชาชนทั่วไป'),
+(5, '30-10-2013 09:50:17', 'หญิง', 'ประถมศึกษา', 'อายุระหว่าง 51 - 59 ปี', 'นักเรียน/นักศึกษา'),
+(6, '30-10-2013 09:50:55', 'ชาย', 'ปริญญาตรี', 'อายุระหว่าง 41 - 50 ปี', 'ผู้บริหาร'),
+(7, '30-10-2013 11:22:15', 'หญิง', 'ปริญญาตรี', 'อายุระหว่าง 31 - 40 ปี', 'นักเรียน/นักศึกษา'),
+(8, '30-10-2013 11:35:08', 'หญิง', 'มัธยมศึกษาตอนต้น/ตอนปลาย/เทียบเท่า', 'อายุระหว่าง 21 - 30 ปี', 'เจ้าหน้าที่'),
+(9, '30-10-2013 11:39:48', 'หญิง', 'ปริญญาตรี', 'อายุ ต่ำกว่า 20 ปี', 'นักเรียน/นักศึกษา');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_question`
+--
+
+CREATE TABLE `tb_question` (
+  `id_question` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_question`
+--
+
+INSERT INTO `tb_question` (`id_question`, `question`) VALUES
+(1, '1. ความสะดวกในการใช้สถานที่ '),
+(2, '2. ความสะอาดในสถานที่'),
+(3, '3. ความปลอดภัยของอุปกรณ์ต่างๆ'),
+(4, '4. เทรนเนอร์มีการแต่งกายเรียบร้อยและมีความน่าเชื่อถือ'),
+(5, '5. เทรนเนอร์มีบุคลิกภาพและรูปร่างที่ดี'),
+(6, '6. เทรนเนอร์พูดจาสุภาพเรียบร้อย'),
+(7, '7. เทรนเนอร์มีความรู้ ความเชี่ยวชาญและความเข้าใจในการด้านการออกกำลังกายอย่างถูกต้อง'),
+(8, '8. เทรนเนอร์ให้คำแนะนำสำหรับสมาชิกที่เริ่มต้นออกกำลังกายทุกโปรแกรม เพื่อให้เข้าใจหลักในการออกกำลังกายมากขึ้น');
 
 -- --------------------------------------------------------
 
@@ -38,8 +144,10 @@ CREATE TABLE `vip_comment` (
 --
 
 INSERT INTO `vip_comment` (`comment_id`, `comment_detail`, `comment_date`, `member_id`) VALUES
-(1, 'เรื่องราวใน \"กัปตัน มาร์เวล\" จากมาร์เวล สตูดิโอส์ เกิดขึ้นในปี 1990 เป็นการผจญภัยครั้งใหม่จากช่วงเวลาที่ไม่เคยเปิดเผยมาก่อนในประวัติศาสตร์ของจักรวาลภาพยนตร์มาร์เวล ที่ติดตามการเดินทางของ แครอล แดนเวอร์ส ที่เธอจะกลายเป็นหนึ่งในฮีโร่ที่มีพลังมากที่สุดในจักรวาล ในขณะที่สงครามระหว่างดวงดาวระหว่างมนุษย์ต่างดาว 2 เผ่าพันธุ์ได้แผ่ขยายมายังโลก แดนเวอร์สพบว่า เธอและเหล่าพันธมิตรนักรบกลุ่มเล็กๆ กำลังอยู่ในศูนย์กลางของมหันตภัยครั้งใหญ่\r\n\r\n', '2019-03-06 08:17:48', 2),
-(2, 'เรื่องราวใน \"กัปตัน มาร์เวล\" จากมาร์เวล สตูดิโอส์ เกิดขึ้นในปี 1990 เป็นการผจญภัยครั้งใหม่จากช่วงเวลาที่ไม่เคยเปิดเผยมาก่อนในประวัติศาสตร์ของจักรวาลภาพยนตร์มาร์เวล ที่ติดตามการเดินทางของ แครอล แดนเวอร์ส ที่เธอจะกลายเป็นหนึ่งในฮีโร่ที่มีพลังมากที่สุดในจักรวาล ในขณะที่สงครามระหว่างดวงดาวระหว่างมนุษย์ต่างดาว 2 เผ่าพันธุ์ได้แผ่ขยายมายังโลก แดนเวอร์สพบว่า เธอและเหล่าพันธมิตรนักรบกลุ่มเล็กๆ กำลังอยู่ในศูนย์กลางของมหันตภัยครั้งใหญ่\r\n\r\n', '2019-03-06 08:17:48', 3);
+(3, 'I Love Fitness', '2019-03-10 14:40:59', 8),
+(4, 'ไม่ผิดหวังที่เลือก vip fitness', '2019-03-10 15:03:48', 10),
+(5, 'ดีทุกอย่าง', '2019-03-11 01:07:38', 9),
+(6, 'ดีมาก', '2019-03-11 04:04:37', 15);
 
 -- --------------------------------------------------------
 
@@ -91,13 +199,18 @@ CREATE TABLE `vip_member` (
 --
 
 INSERT INTO `vip_member` (`member_id`, `member_username`, `member_password`, `member_firstname`, `member_lastname`, `member_sex`, `member_birthday`, `member_address`, `member_tel`, `member_start`, `member_expiry`, `member_typemember`, `member_status`, `member_keeper`) VALUES
-(1, 'admin', '123456', 'admin', 'admin', '', '0000-00-00', 'sad', '', '0000-00-00', '0000-00-00', '0', 'admin', ''),
-(2, 'natta', '123456', 'fuu', 'moon', 'male', '2019-01-18', 'sad', '0213456789', '2019-01-18', '2019-01-19', 'สมาชิก ราย 3 เดือน', 'member', '6'),
-(3, 'woranun', '123456', 'as', 'as', 'female', '2019-01-18', 'sad', '0213456789', '2019-01-18', '2019-01-19', '20', 'member', '6'),
-(4, 'somsai', '123456', 'as', 'as', 'male', '2019-01-18', 'asd', '0213456789', '2019-01-18', '2019-01-19', '0', 'member', ''),
-(5, 'sale', '123456', 'das', 'sad', 'female', '2019-01-08', 'sad', '0258147369', '0000-00-00', '0000-00-00', '0', 'trainer', ''),
-(6, 'trainer', '123456', 'assa', 'asssss', 'male', '2017-04-20', 'asdasd', '0365412987', '0000-00-00', '0000-00-00', '0', 'trainer', ''),
-(7, 'phenwipha', '123456', 'Lee', 'Mos', 'female', '2019-02-13', 'บ้านนอก หลังเขา', '0845466456', '2019-02-01', '2019-02-16', 'ราย 3 เดือน', 'หม้าย', 'พี่ต่อ');
+(1, 'admin', '123456', 'admin', 'admin', '', '1990-02-14', 'sad', '', '0000-00-00', '0000-00-00', '0', 'admin', ''),
+(4, 'Dong', '123456', 'วัฒนา', 'สุขเสนา', 'male', '1989-03-14', 'fasXAsa', '088898889', '0000-00-00', '0000-00-00', '', 'trainer', ''),
+(5, 'BB', '123456', 'สมภพ', 'ถือผล', 'male', '1990-01-08', 'sad', '0258147369', '0000-00-00', '0000-00-00', '0', 'trainer', ''),
+(6, 'Plam', '123456', 'นพนันท์', 'จิตจักร', 'male', '1990-04-20', 'asdasd', '0365412987', '0000-00-00', '0000-00-00', '0', 'trainer', ''),
+(8, 'tan', '123456', 'ชลินยา', 'บรรณจงส์', 'female', '1997-05-29', 'fsgsdfbsr', '084-454664', '2019-03-01', '2019-06-01', 'สมาชิกราย 3 เดือน', 'member', '5'),
+(9, 'fu', 'fuu', 'จุฑากาญจน์', 'ศักด์อนุทัย', 'female', '1996-11-08', '339 ต.จอหอ อ.เมือง จ.นครราชสีมา 30310', '085-768632', '2019-03-01', '2019-06-01', 'สมาชิกราย 3 เดือน', 'member', '5'),
+(10, 'siwakorn', '123456', 'ศิวกร', 'ตรีกูล', 'male', '1998-06-04', 'บุรีรัมย์', '095-612325', '2019-04-09', '2020-04-09', 'สมาชิก ราย 1 ปี', 'member', '4'),
+(11, 'Got', '123456', 'ธีรพันธ์', 'กานขุนทด', 'male', '1990-03-09', 'FSFFDdewFF', '09989898', '0000-00-00', '0000-00-00', '', 'trainer', ''),
+(12, 'Fluk', '123456', 'จุตินันท์', 'สินประเสริฐ', 'female', '1988-05-14', 'หดฟหหฟหฟ', '0898876545', '0000-00-00', '0000-00-00', '', 'trainer', ''),
+(13, 'Tar Tar', '123456', 'วัฒนพงษ์', 'มาลาน', 'male', '1989-11-24', 'dtjjkok\'lm,l;mlk', '089-876656', '2019-02-14', '2019-03-14', 'สมาชิก ราย 1 เดือน', 'member', '12'),
+(14, 'Fies', '123456', 'รัชสิริ', 'นันตา', 'male', '1997-07-08', 'deasftuyuioertyhujikrtrtuityjiko', '0899876543', '2019-03-10', '2019-04-10', 'สมาชิก ราย 3 เดือน', 'member', '11'),
+(15, 'leemos', '123456', 'สมใจ', 'สำราญ', 'male', '1990-04-05', 'จอหอ', '0898875643', '2019-03-11', '2020-03-11', 'สมาชิกราย 1 ปี', 'member', '5');
 
 -- --------------------------------------------------------
 
@@ -119,9 +232,9 @@ CREATE TABLE `vip_promotion` (
 --
 
 INSERT INTO `vip_promotion` (`promotion_id`, `promotion_name`, `promotion_image`, `promotion_detail`, `promotion_adddate`, `promotion_sale_id`) VALUES
-(12, 'โปรโมชั่น fdghdfgdf', '05032019131418-img_promotion.jpg', 'โปรโมชั่นสุดพิเศษ ghfghf', '2019-03-05', 0),
-(13, 'โปรโมชั่น', '11022019144341-img_promotion.jpg', 'โปรโมชั่น', '2019-02-11', 0),
-(14, 'ตารางคลาส', '11022019144425-img_promotion.jpg', 'คลาสแต่ละเดือร', '2019-02-11', 0);
+(13, 'โปรโมชั่น', '11032019093441-img_promotion.jpg', 'โปรโมชั่น บัตรคลัง', '2019-03-11', 0),
+(16, 'โปรโมชั่น', '11032019093517-img_promotion.jpg', 'โปรโมชั่น', '2019-03-11', 0),
+(17, 'โปรโมชั่น', '11032019105714-img_promotion.jpg', '', '2019-03-11', 0);
 
 -- --------------------------------------------------------
 
@@ -168,6 +281,7 @@ CREATE TABLE `vip_tanita` (
   `tanita_img` varchar(300) NOT NULL,
   `tanita_lesson` int(1) NOT NULL,
   `customer_id` int(6) NOT NULL,
+  `tanita_comment` text NOT NULL,
   `member_id` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -175,28 +289,34 @@ CREATE TABLE `vip_tanita` (
 -- Dumping data for table `vip_tanita`
 --
 
-INSERT INTO `vip_tanita` (`tanita_id`, `tanita_img`, `tanita_lesson`, `customer_id`, `member_id`) VALUES
-(10, '1702201917090817022019170908204082880.jpg', 1, 0, 3),
-(11, '1702201917091417022019170914431129947.jpg', 1, 0, 2),
-(12, '1702201917095417022019170954540308279.jpg', 2, 0, 3),
-(13, '17022019171040170220191710401379834916.jpg', 1, 0, 4),
-(14, '17022019231351170220192313511864989040.jpg', 2, 0, 2),
-(15, '0603201916490006032019164900674214502.png', 0, 0, 2),
-(16, '060320191650130603201916501350985044.jpg', 0, 0, 3),
-(17, '1', 0, 0, 4),
-(18, '06032019165227060320191652271085952316.png', 1, 0, 2),
-(19, '0603201916523906032019165239477488634.png', 2, 0, 3),
-(20, '06032019165313060320191653132102564353.jpg', 3, 0, 4),
-(21, '060320191709580603201917095873673743.jpg', 1, 4, 0),
-(22, '06032019171213060320191712131367368211.png', 1, 3, 2),
-(23, '06032019173456060320191734561029763604.jpg', 2, 3, 0),
-(24, '0603201917350206032019173502958534895.jpg', 3, 3, 0),
-(25, '0603201917385306032019173853285244365.jpg', 1, 3, 0),
-(26, '0603201917442006032019174420464898222.png', 2, 3, 0);
+INSERT INTO `vip_tanita` (`tanita_id`, `tanita_img`, `tanita_lesson`, `customer_id`, `tanita_comment`, `member_id`) VALUES
+(44, '1103201909183811032019091838102660830.jpg', 1, 9, '', 5),
+(45, '11032019092800110320190928001405761333.jpg', 2, 9, 'ครั้งที่ 2 ผลการเปลี่ยนแปลง\nดัชนีมวลร่างกาย\nน้ำหนัก  55 kg,\nสูงส่วน  175 cm.\nมวลกล้ามเนื้อเพิ่มขึ้นจากครั้งแรก', 5),
+(49, '1103201909314311032019093143108443828.jpg', 3, 9, 'ครั้งที่ 3 ผลการเปลี่ยนแปลง\r\nดัชนีมวลร่างกาย\r\nกล้ามเนื้อเพิ่มขึ้น\r\nมวลไขมันลดลง', 5),
+(50, '1103201911012111032019110121386849304.jpg', 1, 15, '', 5),
+(51, '1103201911033311032019110333158264616.jpg', 2, 15, 'กล้ามเนื้อเพิ่ม', 5);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tb_answer`
+--
+ALTER TABLE `tb_answer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_person`
+--
+ALTER TABLE `tb_person`
+  ADD PRIMARY KEY (`id_person`);
+
+--
+-- Indexes for table `tb_question`
+--
+ALTER TABLE `tb_question`
+  ADD PRIMARY KEY (`id_question`);
 
 --
 -- Indexes for table `vip_comment`
@@ -245,10 +365,25 @@ ALTER TABLE `vip_tanita`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_answer`
+--
+ALTER TABLE `tb_answer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+--
+-- AUTO_INCREMENT for table `tb_person`
+--
+ALTER TABLE `tb_person`
+  MODIFY `id_person` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `tb_question`
+--
+ALTER TABLE `tb_question`
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
 -- AUTO_INCREMENT for table `vip_comment`
 --
 ALTER TABLE `vip_comment`
-  MODIFY `comment_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `comment_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `vip_course`
 --
@@ -258,12 +393,12 @@ ALTER TABLE `vip_course`
 -- AUTO_INCREMENT for table `vip_member`
 --
 ALTER TABLE `vip_member`
-  MODIFY `member_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `member_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `vip_promotion`
 --
 ALTER TABLE `vip_promotion`
-  MODIFY `promotion_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `promotion_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `vip_satisfaction`
 --
@@ -273,7 +408,7 @@ ALTER TABLE `vip_satisfaction`
 -- AUTO_INCREMENT for table `vip_tanita`
 --
 ALTER TABLE `vip_tanita`
-  MODIFY `tanita_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `tanita_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
