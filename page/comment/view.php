@@ -1,15 +1,14 @@
 <div class="card">
-  <div class="card-body">
-    แบบสอบถามความพึงพอใจ
-  </div>
+    <div class="card-body">
+        แบบสอบถามความพึงพอใจ
+    </div>
 </div>
-<table class="table table-bordered table-light" >
+<table class="table table-bordered table-light">
     <thead>
         <tr>
-            <th scope="col"  width="5">#</th>
-            <th scope="col"  width="60">ชื่อลูกค้า</th>
-            <th scope="col"  width="80">ความคิดเห็น</th>
-            <th scope="col"  width="5"></th>
+            <th scope="col" width="1%">#</th>
+            <th scope="col" width="">ชื่อลูกค้า & ความคิดเห็น</th>
+            <th scope="col" width="1%"></th>
         </tr>
     </thead>
     <tbody>
@@ -26,14 +25,20 @@
             <th scope="row">
                 <?PHP echo $i+1 ; ?>
             </th>
-            <td> <?PHP  echo $comment[$i]['member_firstname'] . ' ' . $comment[$i]['member_lastname'];  ?> </td>
             <td>
-            
-                                       
-<div class="card">
-  <div class="card-body">
- 
-                    <?
+
+
+                <div class="card">
+                    <div class="card-body">
+                        <?PHP  echo $comment[$i]['member_firstname'] . ' ' . $comment[$i]['member_lastname'];  ?>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <?
                     
                     require_once('models/BaseModel.php');
                     
@@ -42,47 +47,62 @@
                     $k=1;
                     $result= mysqli_query($con,$sql);
                     while($row=mysqli_fetch_array($result)){ 
-                    
-                    $id_chk = $row['id_question']; //รหัสคำถาม
-                    $name = $row['question']; // ชื่อคำถาม
+                    ?>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-10">
+<?
+
+$id_chk = $row['id_question']; //รหัสคำถาม
+$name = $row['question']; // ชื่อคำถาม
+
+echo $name
+?>
+                                </div>
+                                <div class="col-2">
+<? 
+                    echo  $comment_point[$id_chk -1]['score'] ;
+                     ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?
                     // print_r($comment);
 
-                    echo $name . " = ";
+                    // echo $name . " = ";
 
 
-                    echo  $comment_point[$id_chk -1]['score'] ;
                     
                     ?> <br>
-                    
 
-<?
+
+                        <?
                         $K++;
                     }
                     ?>
-            
-            
-            
-  </div>
-</div>
-               
-<div class="card">
-  <div class="card-body">
- 
-            
-            
-             <?PHP echo $comment[$i]['comment_detail']; ?>
-             
-                   
-  </div>
-</div>
 
-     
-            
-             </td>
+
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+
+
+
+                        <?PHP echo $comment[$i]['comment_detail']; ?>
+
+
+                    </div>
+                </div>
+
+
+
+            </td>
             <td>
                 <a href="?content=comment&action=delete&id=<?php echo $comment[$i]['comment_id'];?>"
-                    onclick="return confirm('คุณต้องการลบความคิดเห็นนี้หรือไม่')"
-                    style="color:red; font-size: 20px;">
+                    onclick="return confirm('คุณต้องการลบความคิดเห็นนี้หรือไม่')" style="color:red; font-size: 20px;">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </a>
             </td>
