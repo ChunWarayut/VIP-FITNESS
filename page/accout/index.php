@@ -27,7 +27,7 @@ else {
 }
 
 
-$member_id=$_POST['id'];
+$member_id=$_GET['id'];
 
 if( !isset($_GET['action'])) {
 
